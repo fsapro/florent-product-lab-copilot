@@ -1,0 +1,9 @@
+version: 1
+
+defaults:
+  owner: "fsapro"
+  repository_visibility: private
+  main_branch: main
+  max_active_implementation_items: 1
+
+projects: {}
