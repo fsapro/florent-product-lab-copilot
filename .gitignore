@@ -1,11 +1,10 @@
-# Local environment
+# Claude Code local settings
+.claude/settings.local.json
+
+# Local secrets
 .env
 .env.*
 !.env.example
-*.local
-
-# Claude Code local settings
-.claude/settings.local.json
 
 # Logs
 *.log
@@ -25,7 +24,12 @@ Desktop.ini
 tmp/
 temp/
 
-# JavaScript and TypeScript
+# Local setup verification
+git-status-before-discover.txt
+hashes-before-discover.csv
+hashes-after-discover.csv
+
+# Dependencies and generated outputs
 node_modules/
 dist/
 build/
