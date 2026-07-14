@@ -30,6 +30,28 @@ Closes #
 - Refactoring hors périmètre : non
 - Alternative native ou existante vérifiée : oui
 
+## Vérification indépendante
+
+- Niveau requis (0 / 1 / 2) : ...
+- Vérificateur (agent ou session, distinct de l'implémenteur) : ...
+- Verdict (pass / pass_with_reservations / fail / not_verifiable) : ...
+- Preuves : ...
+- Réserves : ...
+- Éléments non vérifiés : ...
+
+<details>
+<summary>Rapport complet du vérificateur (verbatim, non reformulé)</summary>
+
+```yaml
+<!-- Coller ici le bloc de verdict complet tel que produit par le vérificateur. -->
+```
+
+</details>
+
+## Capitalisation
+
+- Apprentissage (aucun / local créé `LRN-...` / candidat de promotion identifié) : aucun
+
 ## Validation produit
 
 ### Comment valider

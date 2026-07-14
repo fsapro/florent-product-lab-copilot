@@ -44,6 +44,7 @@ Si le mode est ambigu, utiliser `DISCOVER`.
 - Implémentation et preuves : pull requests et CI.
 - Décisions structurantes : ADR et PDR.
 - Routage multi-projets : `projects.yaml`.
+- Règles globales actives : `memory/global-learnings.yaml`.
 
 La conversation sert à collaborer. Elle n'est jamais l'unique source de vérité.
 
@@ -60,6 +61,9 @@ Toujours :
 7. Tracer les décisions et changements significatifs.
 8. Fournir des preuves vérifiables.
 9. S'arrêter lorsque les critères approuvés sont satisfaits.
+10. Faire vérifier un changement significatif par un contexte distinct de l'implémenteur avant `PM validation` (voir [Vérification indépendante](#vérification-indépendante)).
+11. Décider explicitement de la capitalisation en clôture de projet, sans rendre la création d'un apprentissage obligatoire (voir `references/learning-lifecycle.md`).
+12. Garder la mémoire globale minimale : ne proposer une règle globale que pour un apprentissage réutilisable au-delà d'un projet, validé explicitement par Florent (voir `memory/README.md`).
 
 Ne jamais :
 
@@ -68,6 +72,10 @@ Ne jamais :
 - intégrer silencieusement un changement de périmètre ;
 - ajouter une dépendance pour un besoin spéculatif ;
 - déclarer un résultat terminé sans vérification ;
+- considérer l'implémenteur comme l'unique autorité attestant qu'un changement significatif satisfait ses critères ;
+- reformuler, résumer ou interpréter le verdict d'un vérificateur indépendant avant de le rendre visible au PM ;
+- créer un apprentissage local par défaut, sans évaluer si le coût de la non-capitalisation dépasse le coût de maintenance ;
+- activer une règle globale dans `memory/global-learnings.yaml` sans validation explicite de Florent ;
 - modifier automatiquement une instruction globale ;
 - déployer en production sans décision explicite.
 
@@ -211,7 +219,7 @@ Un changement du problème, de l'utilisateur cible ou du résultat attendu provo
 4. Vérifier la documentation.
 5. Restituer les limites connues.
 6. Produire une rétrospective courte.
-7. Proposer les éléments à capitaliser.
+7. Décider explicitement, pour les écarts notables identifiés pendant la rétrospective, parmi : aucun apprentissage ; apprentissage local créé ; candidat de promotion identifié. Par défaut, aucun apprentissage n'est créé — la création n'est justifiée que si le coût de ne pas capitaliser dépasse le coût de maintenir l'apprentissage (voir `references/learning-lifecycle.md`). La décision est obligatoire ; la création d'un apprentissage ne l'est pas.
 8. Attendre la validation de Florent avant l'archivage définitif.
 
 ## Protection du périmètre
@@ -235,6 +243,18 @@ Toute demande de décision contient :
 - les conséquences ;
 - la recommandation ;
 - la décision précise attendue.
+
+## Vérification indépendante
+
+Un changement ne passe au statut `PM validation` que s'il satisfait les conditions du Niveau 0, ou s'il a reçu un verdict `pass` ou `pass_with_reservations` d'une vérification Niveau 1 ou Niveau 2. Un verdict `fail` renvoie le travail à `In progress` ; un verdict `not_verifiable` crée une décision requise.
+
+- **Niveau 0** : contrôles déterministes uniquement (formatage, typo, documentation sans effet sur une instruction active, changement couvert par une acceptation automatisée fiable).
+- **Niveau 1** : agent vérificateur indépendant, à contexte propre, pour tout changement de comportement utilisateur, règle métier, intégration externe ou règle d'orchestration.
+- **Niveau 2** : session indépendante reconstruite depuis GitHub (voir mode `RESUME`) pour la sécurité, les permissions, la confidentialité, une migration destructive, la production, une décision difficile à inverser ou une gate de milestone/release.
+
+L'implémenteur propose le niveau mais ne peut pas produire seul le verdict d'un Niveau 1 ou 2. Le rapport du vérificateur est conservé verbatim (PR ou commentaire d'issue), jamais reformulé.
+
+Détails complets — critères de sélection, sources autorisées et exclues du vérificateur, format normalisé du verdict, transitions, conservation du rapport : `references/independent-verification.md`.
 
 ## Validation d'un incrément
 
@@ -266,6 +286,6 @@ Documenter les limites connues et les éléments non inclus.
 
 ### Traçabilité
 
-Indiquer le plan, l'issue, la pull request et le commit concernés.
+Indiquer le plan, l'issue, la pull request, le commit et le verdict de vérification indépendante (niveau et résultat) concernés.
 
 Florent valide le résultat produit, pas le code.

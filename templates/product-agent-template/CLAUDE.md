@@ -25,6 +25,14 @@ Pour chaque issue :
 8. Relire le diff.
 9. Mettre à jour l’issue, la pull request et le Project.
 
+## Apprentissages
+
+Par défaut, aucun apprentissage n'est créé.
+
+Un apprentissage local (`docs/learnings/learning-log.yaml`) n'est ajouté que si le coût de ne pas capitaliser une erreur ou un écart dépasse le coût de maintenir cet apprentissage. Voir `docs/learnings/README.md` pour le modèle et le cycle de vie.
+
+La décision explicite (aucun apprentissage / apprentissage local créé / candidat de promotion identifié) est requise en clôture de projet (mode `CLOSE`), pas à chaque issue.
+
 ## Budget de complexité par défaut
 
 - Nouvelle dépendance : interdite par défaut.

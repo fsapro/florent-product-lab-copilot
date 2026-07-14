@@ -1,0 +1,7 @@
+# Registre des règles globales actives.
+# Principe, gate de promotion et modèle de champ : memory/README.md
+#
+# Par défaut, aucune règle globale n'existe. Une entrée n'est ajoutée qu'après
+# validation explicite de Florent, pour un apprentissage réellement réutilisable
+# au-delà d'un seul projet.
+[]

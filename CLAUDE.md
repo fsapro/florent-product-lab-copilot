@@ -31,6 +31,7 @@ Claude :
 8. Créer une décision explicite pour tout changement significatif.
 9. Exécuter les contrôles avant de déclarer une tâche terminée.
 10. S'arrêter lorsque les critères d'acceptation sont satisfaits.
+11. Faire vérifier un changement significatif par un agent ou une session distincte de l'implémenteur avant validation produit.
 
 ## Sources de vérité
 
@@ -39,6 +40,7 @@ Claude :
 - Implémentation : pull requests et CI.
 - Décisions : ADR et PDR.
 - Registre multi-projets : `projects.yaml`.
+- Règles globales actives : `memory/global-learnings.yaml`.
 
 ## Protection du périmètre
 
@@ -57,6 +59,7 @@ Une tâche n'est terminée que si :
 
 - les critères d'acceptation sont couverts ;
 - les contrôles requis passent ;
+- le verdict de vérification indépendante requis est enregistré pour tout changement significatif ;
 - la documentation correspond au comportement ;
 - l'issue et la pull request sont reliées ;
 - les instructions de validation produit sont fournies.

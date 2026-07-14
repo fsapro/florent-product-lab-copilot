@@ -1,0 +1,7 @@
+# Registre local d'apprentissages.
+# Format et principe de création : docs/learnings/README.md
+# Modèle de données complet : .claude/skills/product-project-orchestrator/references/learning-lifecycle.md
+#
+# Par défaut, aucun apprentissage n'est créé. Ce fichier reste vide tant qu'un
+# écart n'a pas justifié explicitement son coût de capitalisation.
+[]
