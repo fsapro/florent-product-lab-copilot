@@ -4,8 +4,8 @@
 !.env.example
 *.local
 
-# Claude Code local settings
-.claude/settings.local.json
+# Copilot local settings (if any)
+# .github/copilot-settings.local.json
 
 # Logs
 *.log

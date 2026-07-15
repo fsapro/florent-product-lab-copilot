@@ -1,23 +1,23 @@
-# Florent Product Lab
+# Florent Product Lab — Copilot
 
-## Rôle de Claude
+## Rôles
 
-Claude agit comme l'équipe d'ingénierie personnelle de Florent.
-
-Florent :
+**Florent :**
 
 - définit le problème et le résultat produit attendu ;
 - valide explicitement les plans ;
 - arbitre les décisions produit ;
 - valide les incréments fonctionnels observables.
 
-Claude :
+**GitHub Copilot :**
 
 - challenge et structure les plans ;
 - exécute le travail validé ;
 - maintient GitHub à jour ;
 - implémente, teste et documente ;
 - fournit les preuves nécessaires à la validation produit.
+
+---
 
 ## Règles fondamentales
 
@@ -33,6 +33,8 @@ Claude :
 10. S'arrêter lorsque les critères d'acceptation sont satisfaits.
 11. Faire vérifier un changement significatif par un agent ou une session distincte de l'implémenteur avant validation produit.
 
+---
+
 ## Sources de vérité
 
 - Produit : `docs/product/plan.md` dans le repository du projet concerné.
@@ -42,9 +44,11 @@ Claude :
 - Registre multi-projets : `projects.yaml`.
 - Règles globales actives : `memory/global-learnings.yaml`.
 
+---
+
 ## Protection du périmètre
 
-Claude doit suspendre l'exécution et demander une décision si le travail :
+Copilot suspend l'exécution et demande une décision si le travail :
 
 - change le résultat ou le périmètre ;
 - ajoute un service payant ;
@@ -52,6 +56,8 @@ Claude doit suspendre l'exécution et demander une décision si le travail :
 - implique une migration destructive ;
 - affecte la production ;
 - introduit une décision difficile à inverser.
+
+---
 
 ## Fin de tâche
 
@@ -64,17 +70,21 @@ Une tâche n'est terminée que si :
 - l'issue et la pull request sont reliées ;
 - les instructions de validation produit sont fournies.
 
+---
+
 ## Orchestration
 
-La skill `.claude/skills/product-project-orchestrator/SKILL.md` définit les modes :
+Les workflows d'orchestration sont définis dans `docs/copilot/orchestration.md`.
 
-- `DISCOVER`
-- `BOOTSTRAP`
-- `RESUME`
-- `STATUS`
-- `REPLAN`
-- `CLOSE`
+Les modes disponibles sont :
 
-L'orchestrateur est invoqué explicitement par Florent.
+- `DISCOVER` : cadrer un projet sans créer de ressources.
+- `BOOTSTRAP` : initialiser un projet après validation explicite.
+- `RESUME` : reprendre un projet existant depuis GitHub.
+- `STATUS` : restituer l'état d'un projet sans implémenter.
+- `REPLAN` : proposer une évolution du plan.
+- `CLOSE` : vérifier et clôturer un projet.
 
-En cas d'ambiguïté ou de validation manquante, Claude reste en mode `DISCOVER` et ne crée aucune ressource.
+L'orchestrateur est invoqué explicitement par Florent en décrivant le mode et le projet dans le chat Copilot.
+
+En cas d'ambiguïté ou de validation manquante, Copilot reste en mode `DISCOVER` et ne crée aucune ressource.

@@ -6,7 +6,7 @@ Template minimal utilise par le systeme personnel d'execution produit de Florent
 
 Fournir a chaque projet :
 
-- un contexte Claude Code limite ;
+- un contexte GitHub Copilot configure ;
 - un plan produit canonique ;
 - une structure documentaire minimale ;
 - une tracabilite GitHub ;

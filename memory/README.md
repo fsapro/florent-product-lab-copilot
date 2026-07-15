@@ -16,7 +16,7 @@ Ce registre doit rester minuscule. Une mémoire globale volumineuse est un éche
 
 ## D'où vient un candidat
 
-Un candidat de promotion globale n'est jamais collecté automatiquement. Il naît d'un apprentissage local déjà qualifié (`status: promotion_candidate`, `scope_candidate: global` dans le `docs/learnings/learning-log.yaml` d'un projet — voir `.claude/skills/product-project-orchestrator/references/learning-lifecycle.md`).
+Un candidat de promotion globale n'est jamais collecté automatiquement. Il naît d'un apprentissage local déjà qualifié (`status: promotion_candidate`, `scope_candidate: global` dans le `docs/learnings/learning-log.yaml` d'un projet — voir `docs/copilot/learning-lifecycle.md` à la racine du repository).
 
 Aucun fichier de candidats séparé n'existe : la revue se fait par lecture directe du ou des `learning-log.yaml` concernés, à la demande explicite de Florent.
 
