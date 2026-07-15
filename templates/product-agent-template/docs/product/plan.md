@@ -2,12 +2,12 @@
 
 ## Metadonnees
 
-project_id: "
-project_name: "
+project_id: ""
+project_name: ""
 plan_status: draft
 plan_version: "0.1"
-approved_by: "
-approved_at: "
+approved_by: ""
+approved_at: ""
 
 ## 1. Probleme
 

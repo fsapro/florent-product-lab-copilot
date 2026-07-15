@@ -6,6 +6,15 @@ Ce document trace la migration du repository `florent-product-lab` depuis une or
 - **Branche cible :** `copilot-main`
 - **Décision de suppression :** les fichiers Claude actifs ont été supprimés ; l'historique Git conserve la traçabilité complète.
 
+> **Addendum (2026-07-15, même jour) :** `COPILOT.md` (racine et template), créé lors de cette
+> migration, a ensuite été fusionné dans `.github/copilot-instructions.md` puis supprimé.
+> Cause : `COPILOT.md` n'est pas un fichier nativement chargé par GitHub Copilot — seul
+> `.github/copilot-instructions.md` l'est. L'indirection ("lire COPILOT.md avant toute
+> action") s'est révélée non fiable et a contribué à un drift de gouvernance observé sur un
+> projet enfant. Voir `/memories/session/plan-remediation-gouvernance.md` pour le détail.
+> Toutes les mentions de `COPILOT.md` ci-dessous reflètent l'état à la date de la migration
+> Claude→Copilot, avant cette correction ultérieure.
+
 ---
 
 ## Ce qui a été conservé

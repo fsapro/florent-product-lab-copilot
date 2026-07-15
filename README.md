@@ -13,7 +13,7 @@ Ce repository est conçu pour être utilisé avec GitHub Copilot en mode Agent d
 1. Ouvrir ce repository dans VS Code.
 2. Lancer GitHub Copilot Chat en mode Agent.
 3. Décrire le mode souhaité et le projet : `DISCOVER florent-product-lab` ou `RESUME mon-projet`.
-4. Copilot charge le contexte depuis `COPILOT.md` et les sources de vérité, puis orchestre le travail.
+4. Copilot charge le contexte depuis `.github/copilot-instructions.md` et les sources de vérité, puis orchestre le travail.
 
 ### Modes disponibles
 
@@ -26,7 +26,7 @@ Ce repository est conçu pour être utilisé avec GitHub Copilot en mode Agent d
 | `REPLAN` | Proposer une évolution du plan |
 | `CLOSE` | Vérifier et clôturer un projet |
 
-Les prompts réutilisables sont dans `prompts/copilot/`. La documentation détaillée des modes est dans `docs/copilot/orchestration.md`.
+Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/resume`, `/status`, `/replan`, `/close` dans Copilot Chat). La documentation détaillée des modes est dans `docs/copilot/orchestration.md`.
 
 ---
 
@@ -34,9 +34,15 @@ Les prompts réutilisables sont dans `prompts/copilot/`. La documentation détai
 
 ```
 .github/
-└── copilot-instructions.md   # Point d'entrée natif GitHub Copilot
-
-COPILOT.md                    # Contrat de gouvernance actif
+├── copilot-instructions.md   # Point d'entrée natif GitHub Copilot — contrat de gouvernance complet
+└── prompts/                  # Prompts natifs invocables via /discover /bootstrap /resume /status /replan /close
+    ├── README.md
+    ├── discover.prompt.md
+    ├── bootstrap.prompt.md
+    ├── resume.prompt.md
+    ├── status.prompt.md
+    ├── replan.prompt.md
+    └── close.prompt.md
 
 docs/copilot/
 ├── orchestration.md          # Workflows DISCOVER/BOOTSTRAP/RESUME/STATUS/REPLAN/CLOSE
@@ -48,20 +54,12 @@ memory/
 ├── global-learnings.yaml     # Règles globales actives (multi-projets)
 └── README.md                 # Gouvernance de la mémoire globale
 
-prompts/copilot/
-├── README.md                 # Index des prompts
-├── discover.prompt.md        # Prompt mode DISCOVER
-├── bootstrap.prompt.md       # Prompt mode BOOTSTRAP
-├── resume.prompt.md          # Prompt mode RESUME
-├── status.prompt.md          # Prompt mode STATUS
-├── replan.prompt.md          # Prompt mode REPLAN
-└── close.prompt.md           # Prompt mode CLOSE
-
 projects.yaml                 # Registre multi-projets
 
 templates/
 └── product-agent-template/   # Template pour créer un nouveau projet
-    ├── COPILOT.md            # Instructions Copilot du projet
+    ├── .github/copilot-instructions.md   # Instructions Copilot du projet (contrat complet)
+    ├── .github/prompts/       # Prompts resume/status/replan/close adaptés au repo enfant
     ├── docs/product/plan.md  # Plan produit canonique
     └── docs/learnings/       # Registre local d'apprentissages
 ```
@@ -77,8 +75,8 @@ templates/
 
 ### Fichiers natifs GitHub Copilot
 
-- `.github/copilot-instructions.md` : instructions automatiquement lues par Copilot à chaque session dans ce repository.
-- `COPILOT.md` : contrat de gouvernance lisible par les humains et référencé par Copilot.
+- `.github/copilot-instructions.md` : seule source de vérité chargée automatiquement par Copilot à chaque session — contient l'intégralité du contrat de gouvernance (rôles, règles fondamentales, protection du périmètre, fin de tâche). Aucun renvoi vers un autre fichier pour les règles non-négociables.
+- `.github/prompts/*.prompt.md` : emplacement natif des prompts réutilisables, invocables via slash-command (`/discover`, `/bootstrap`, etc.) dans Copilot Chat.
 
 ### Mémoire et apprentissages
 
