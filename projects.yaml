@@ -6,4 +6,32 @@ defaults:
   main_branch: main
   max_active_implementation_items: 1
 
-projects: {}
+projects:
+  agent-prequalification-opportunites:
+    name: agent-prequalification-opportunites
+    description: "Agent de préqualification IA des opportunités Notion — Power Automate + Copilot Studio + Teams"
+    repository: fsapro/agent-prequalification-opportunites
+    status: active
+    started: 2026-07-15
+    phases:
+      - id: phase-1
+        name: "Audit de l'existant"
+        milestone: 1
+      - id: phase-2
+        name: "Prompt & Schéma de l'Agent Copilot Studio"
+        milestone: 2
+      - id: phase-3
+        name: "Power Automate — Trigger & Appel Agent"
+        milestone: 3
+      - id: phase-4
+        name: "Notification Teams avec Adaptive Card"
+        milestone: 4
+      - id: phase-5
+        name: "Mise à jour Notion post-validation"
+        milestone: 5
+    resources:
+      copilot_studio_agent: "https://copilotstudio.microsoft.com/environments/a39f8854-624f-e5e1-a440-b50fdd1c80fd/agents/e2d38b5f-5b1d-40ab-b7fd-35b30c9c0b36"
+      power_automate_flow: "https://copilotstudio.microsoft.com/environments/a39f8854-624f-e5e1-a440-b50fdd1c80fd/flows/718a36c7-2695-d7df-6864-87001b73e415"
+      notion_offer_catalog: "https://app.notion.com/p/39d36a1ef15881d3945bd2ea728f25e5"
+      capabilities_collection: "collection://5f038ff0-62ca-40a3-9af2-c3b5dbdd7687"
+      features_collection: "collection://d2888f7a-79b7-4017-b080-b1f670ed48f0"
