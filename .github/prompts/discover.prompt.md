@@ -12,7 +12,7 @@ Objectif : co-construire un plan produit sans créer ni modifier de ressource Gi
 
 ## Instructions pour Copilot
 
-1. Lire `COPILOT.md` pour les règles de gouvernance actives.
+1. Lire `.github/copilot-instructions.md` pour les règles de gouvernance actives.
 2. Analyser le problème décrit par Florent.
 3. Challenger le besoin : quel résultat produit est attendu ?
 4. Identifier les utilisateurs cibles.
