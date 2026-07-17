@@ -41,3 +41,6 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+
+# Clones locaux de repos projet (jamais des sous-modules/embedded repos du meta-repo)
+repos/
