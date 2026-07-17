@@ -83,9 +83,9 @@ Une tâche n'est terminée que si :
 ## Workflows disponibles
 
 Les workflows d'orchestration sont documentés dans `docs/copilot/orchestration.md`.
-Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/resume`, `/status`, `/replan`, `/close`).
+Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/adopt`, `/resume`, `/status`, `/replan`, `/close`).
 
-Modes disponibles : `DISCOVER` · `BOOTSTRAP` · `RESUME` · `STATUS` · `REPLAN` · `CLOSE`
+Modes disponibles : `DISCOVER` · `BOOTSTRAP` · `ADOPT` · `RESUME` · `STATUS` · `REPLAN` · `CLOSE`
 
 L'orchestrateur est invoqué explicitement par le PM en décrivant le mode et le projet dans le chat Copilot.
 

@@ -1,5 +1,10 @@
 version: 1
 
+# Champs optionnels par projet (non renseignés = comportement historique inchangé) :
+#   origin: bootstrap|adopted   — bootstrap (défaut implicite) = initialisé greenfield via le mode BOOTSTRAP ;
+#                                  adopted = inscrit dans le framework via le mode ADOPT (repo existant, brownfield).
+#   adopted_at: <YYYY-MM-DD>   — date d'inscription, uniquement si origin: adopted.
+
 defaults:
   owner: "fsapro"
   repository_visibility: private

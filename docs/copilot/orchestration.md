@@ -39,6 +39,37 @@ Copilot ne remplace pas le PM dans les décisions produit.
 
 ---
 
+### ADOPT
+
+**Objectif :** Inscrire un projet existant (brownfield) dans le framework — repository avec du code, un historique, et éventuellement une gouvernance ou des issues déjà en place — sans jamais remettre en question le travail déjà réalisé.
+
+**Prérequis :** aucun plan à valider au sens DISCOVER. Le travail existant du repository cible est traité comme une baseline validée par défaut.
+
+**Différence structurelle avec BOOTSTRAP :** BOOTSTRAP suppose un repository greenfield (vide, scaffold = premier commit, écrasement sans risque). ADOPT suppose un repository dans un état **inconnu et quelconque** (aucune gouvernance, gouvernance custom divergente, issues/PRs actives, historique long). Le scaffold y est donc **idempotent** (n'ajoute que ce qui manque, ne remplace jamais sans confirmation explicite) et la livraison se fait par défaut via **PR** plutôt que par push direct.
+
+**Séquence obligatoire :**
+
+1. **Découverte read-only.** Avant tout geste d'écriture : README, historique git, `.github/copilot-instructions.md` existant, `docs/` existants, issues/PRs ouvertes, milestones, protection de branche, CI existante.
+2. **Aucune remise en question de l'existant.** Ne jamais proposer de refonte ni challenger les choix déjà faits — seulement identifier ce qui manque pour l'inscription dans le framework.
+3. **Détection de conflit de gouvernance.** Si `.github/copilot-instructions.md` existe déjà et diverge du template, présenter le diff au PM et obtenir une décision explicite (garder / remplacer / fusionner).
+4. **Scaffold idempotent.** Copier uniquement les fichiers du template absents du repository cible ; ne jamais écraser un fichier existant sans confirmation explicite.
+5. **Reconstitution minimale du plan.** Générer `docs/product/plan.md` depuis l'existant, en marquant explicitement les sections reconstituées comme « à confirmer ».
+6. **Registre.** Ajouter/compléter l'entrée `projects.yaml` avec `status: active`, `origin: adopted`, `adopted_at: <date>`, phases inférées des milestones existants sinon `phase-0 — Adoption`. Vérifier au préalable qu'une entrée `origin: adopted` n'existe pas déjà (garde-fou anti double-exécution).
+7. **Aucune issue rétroactive.** Ne créer aucune issue pour du travail déjà fait.
+8. **Aucune opération git destructive.** Jamais de force-push, de réécriture d'historique, ou de suppression de branche.
+9. **Livraison via PR par défaut.** Sauf confirmation explicite du PM que le repository est mono-contributeur sans protection de branche.
+10. **Vérification finale.** Mêmes garde-fous que BOOTSTRAP (contenu réellement présent, scaffold complet, gouvernance inline non indirecte).
+11. **Confirmation au PM.** Repository, fichiers ajoutés, entrée `projects.yaml`, lien PR (ou commit), plan reconstitué à valider.
+
+**Pièges connus (spécifiques au brownfield) :**
+
+- Un `.github/copilot-instructions.md` existant mais incomplet peut sembler « déjà présent » sans contenir les règles inline requises — toujours comparer le contenu, pas seulement la présence du fichier.
+- Des issues actives existantes ne doivent jamais être réorganisées pour coller au modèle `phases`/`milestones` sans décision explicite du PM (relève de `REPLAN`, pas d'ADOPT).
+- Une branche par défaut protégée empêche un push direct : la découvrir en amont (étape 1) évite un échec en fin de séquence.
+- Reconstituer un plan trop détaillé à partir de peu d'éléments donne une fausse impression de validation — toujours marquer les sections reconstituées comme « à confirmer ».
+
+---
+
 ### BOOTSTRAP
 
 **Objectif :** Initialiser un projet sur GitHub après validation explicite du plan par le PM, avec un repository immédiatement exploitable — jamais un repository vide de contenu.
@@ -155,7 +186,7 @@ Deux niveaux d'invocation sont disponibles :
   `setup/user-skills/product-orchestrator/SKILL.md`.
 - **Local (ce repository uniquement)** : décrire le mode et le projet directement
   dans le chat Copilot en ayant ce workspace ouvert ; les prompts `.github/prompts/`
-  sont invocables via `/discover`, `/bootstrap`, etc.
+  sont invocables via `/discover`, `/bootstrap`, `/adopt`, etc.
 
 Exemple : `RESUME florent-product-lab`
 

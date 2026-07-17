@@ -1,6 +1,6 @@
 ---
 name: product-orchestrator
-description: 'Orchestrateur produit multi-projets, installe au niveau utilisateur (cross-repo). Detecte l etat reel (projects.yaml, GitHub issues, Project, PRs) et route vers le mode approprie : DISCOVER (cadrer un nouveau projet), BOOTSTRAP (initialiser apres validation), RESUME (reprendre un projet existant), STATUS (etat sans implementer), REPLAN (faire evoluer le plan), CLOSE (verifier et cloturer). Use when: orchestrer un projet produit, cadrer un projet, initialiser un projet, reprendre un projet, ou quand le PM decrit un mode (DISCOVER/BOOTSTRAP/RESUME/STATUS/REPLAN/CLOSE) et un nom de projet sans preciser explicitement quel prompt utiliser.'
+description: 'Orchestrateur produit multi-projets, installe au niveau utilisateur (cross-repo). Detecte l etat reel (projects.yaml, GitHub issues, Project, PRs) et route vers le mode approprie : DISCOVER (cadrer un nouveau projet), BOOTSTRAP (initialiser apres validation), ADOPT (inscrire un projet existant/brownfield sans remettre en question le travail deja fait), RESUME (reprendre un projet existant), STATUS (etat sans implementer), REPLAN (faire evoluer le plan), CLOSE (verifier et cloturer). Use when: orchestrer un projet produit, cadrer un projet, initialiser un projet, inscrire un projet existant dans le framework, reprendre un projet, ou quand le PM decrit un mode (DISCOVER/BOOTSTRAP/ADOPT/RESUME/STATUS/REPLAN/CLOSE) et un nom de projet sans preciser explicitement quel prompt utiliser.'
 argument-hint: '<MODE optionnel> <nom-du-projet>'
 ---
 
@@ -31,12 +31,13 @@ Ne jamais choisir un mode par supposition. Avant de router :
 
 1. **Identifier le projet** depuis l'argument fourni, ou le demander si ambigu.
 2. **Determiner le contexte** (etape 0) : repository meta ou repository enfant.
-3. **Si le mode demande est DISCOVER ou BOOTSTRAP** :
+3. **Si le mode demande est DISCOVER, BOOTSTRAP ou ADOPT** :
    - Ces modes necessitent `projects.yaml` (cross-projets). Si le workspace courant
      n'est pas le repository meta, indiquer d'ouvrir `florent-product-lab-copilot`
      plutot que d'improviser une creation de ressource GitHub locale.
-   - Si c'est bien le repository meta, executer `.github/prompts/discover.prompt.md`
-     ou `.github/prompts/bootstrap.prompt.md`.
+   - Si c'est bien le repository meta, executer `.github/prompts/discover.prompt.md`,
+     `.github/prompts/bootstrap.prompt.md` ou `.github/prompts/adopt.prompt.md` selon
+     le mode demande.
 4. **Si le mode demande est RESUME, STATUS, REPLAN ou CLOSE** :
    - Si une skill locale `project-orchestrator` existe dans le repository courant,
      la deleguer (elle a le contexte complet du plan et des issues locales).
@@ -53,6 +54,7 @@ Ne jamais choisir un mode par supposition. Avant de router :
 |---|---|
 | Projet absent de `projects.yaml`, aucun plan approuve | `DISCOVER` |
 | Projet dans `projects.yaml`, plan approuve, mais aucun repository/issue GitHub cree | `BOOTSTRAP` |
+| Repository existant (code/historique) sans gouvernance Copilot ni entree `projects.yaml` | `ADOPT` |
 | Repository existant, issues ouvertes, pas de session recente | `RESUME` |
 | Demande d'etat sans intention d'agir | `STATUS` |
 | Ecart constate entre le plan approuve et la realite observee | `REPLAN` |
@@ -68,7 +70,10 @@ Ne jamais choisir un mode par supposition. Avant de router :
 
 - Ne jamais executer un mode sans avoir explicite l'etat detecte et obtenu confirmation
   si ce n'est pas l'utilisateur qui a nomme le mode lui-meme.
-- Ne jamais creer de ressource GitHub en dehors du mode `BOOTSTRAP` valide, et jamais
-  sans que le workspace courant soit le repository meta.
+- Ne jamais creer de ressource GitHub en dehors des modes `BOOTSTRAP` ou `ADOPT` valides,
+  et jamais sans que le workspace courant soit le repository meta.
+- En mode `ADOPT`, ne jamais remettre en question le travail deja realise dans le
+  repository cible, ne jamais ecraser un fichier existant sans confirmation explicite,
+  et ne jamais creer d'issue retroactive pour du travail deja fait.
 - Reprendre l'etat depuis GitHub et `projects.yaml`, jamais depuis la memoire du chat
   seule.
