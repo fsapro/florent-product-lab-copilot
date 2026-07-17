@@ -37,12 +37,13 @@ Ce repository est conçu pour être utilisé avec GitHub Copilot en mode Agent d
 |---|---|
 | `DISCOVER` | Cadrer un nouveau projet sans créer de ressources |
 | `BOOTSTRAP` | Initialiser un projet après validation du plan |
+| `ADOPT` | Inscrire un projet existant (brownfield) dans le framework sans remettre en question le travail déjà fait |
 | `RESUME` | Reprendre un projet existant depuis GitHub |
 | `STATUS` | Restituer l'état d'un projet |
 | `REPLAN` | Proposer une évolution du plan |
 | `CLOSE` | Vérifier et clôturer un projet |
 
-Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/resume`, `/status`, `/replan`, `/close` dans Copilot Chat). La documentation détaillée des modes est dans `docs/copilot/orchestration.md`.
+Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/adopt`, `/resume`, `/status`, `/replan`, `/close` dans Copilot Chat). La documentation détaillée des modes est dans `docs/copilot/orchestration.md`.
 
 ---
 
@@ -51,17 +52,18 @@ Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discov
 ```
 .github/
 ├── copilot-instructions.md   # Point d'entrée natif GitHub Copilot — contrat de gouvernance complet
-└── prompts/                  # Prompts natifs invocables via /discover /bootstrap /resume /status /replan /close
+└── prompts/                  # Prompts natifs invocables via /discover /bootstrap /adopt /resume /status /replan /close
     ├── README.md
     ├── discover.prompt.md
     ├── bootstrap.prompt.md
+    ├── adopt.prompt.md
     ├── resume.prompt.md
     ├── status.prompt.md
     ├── replan.prompt.md
     └── close.prompt.md
 
 docs/copilot/
-├── orchestration.md          # Workflows DISCOVER/BOOTSTRAP/RESUME/STATUS/REPLAN/CLOSE
+├── orchestration.md          # Workflows DISCOVER/BOOTSTRAP/ADOPT/RESUME/STATUS/REPLAN/CLOSE
 ├── learning-lifecycle.md     # Cycle de vie des apprentissages locaux
 ├── independent-verification.md  # Niveaux de vérification indépendante
 └── MIGRATION_FROM_CLAUDE.md  # Rapport de migration depuis la version Claude
