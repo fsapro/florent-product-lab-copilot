@@ -12,6 +12,29 @@ defaults:
   max_active_implementation_items: 1
 
 projects:
+  mcp-product-opportunity:
+    name: mcp-product-opportunity
+    description: "Repository de test MCP end-to-end pour VS Code et Copilot Agent"
+    repository: fsapro/mcp-product-opportunity
+    status: active
+    started: 2026-07-17
+    phases:
+      - id: phase-1
+        name: "Scaffold et configuration TypeScript"
+        milestone: 1
+      - id: phase-2
+        name: "Outils MCP core"
+        milestone: 2
+      - id: phase-3
+        name: "Validation, erreurs et logs"
+        milestone: 3
+      - id: phase-4
+        name: "Tests automatises"
+        milestone: 4
+      - id: phase-5
+        name: "Documentation et verification VS Code"
+        milestone: 5
+
   agent-prequalification-opportunites:
     name: agent-prequalification-opportunites
     description: "Agent de préqualification IA des opportunités Notion — Power Automate + Copilot Studio + Teams"
