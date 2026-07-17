@@ -7,7 +7,7 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 
 ## Rôles
 
-**Florent (PM) :** définit le problème, valide les plans, arbitre les décisions produit, valide les incréments observables.
+**Le PM :** définit le problème, valide les plans, arbitre les décisions produit, valide les incréments observables.
 
 **GitHub Copilot (ingénierie) :** exécute le travail validé, maintient GitHub à jour, implémente/teste/documente, fournit les preuves de validation.
 
@@ -109,4 +109,4 @@ Toute exception doit expliquer : le besoin démontré, les alternatives considé
 
 Pour un incrément observable, fournir : ce qui change, les critères couverts, les étapes de validation, le résultat attendu, les contrôles exécutés, les limites et risques, les liens vers l'issue, la PR et le plan.
 
-Florent valide le comportement produit, pas le code.
+Le PM valide le comportement produit, pas le code.

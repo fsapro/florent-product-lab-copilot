@@ -1,6 +1,22 @@
-# Florent Product Lab — Copilot-first
+# Product Lab — Copilot-first
 
-Système personnel d'exécution produit de Florent, configuré pour GitHub Copilot.
+Système d'exécution produit multi-projets, configuré pour GitHub Copilot.
+
+---
+
+## Installation
+
+Ce repository fonctionne sans installation pour un usage local (DISCOVER, BOOTSTRAP,
+RESUME, etc. depuis ce workspace). Pour rendre l'orchestrateur disponible **depuis
+n'importe quel autre repository** (créé ou non depuis ce système), installer la skill
+au niveau utilisateur :
+
+```powershell
+./setup/install.ps1
+```
+
+Ce script copie `setup/user-skills/product-orchestrator/` vers `~/.copilot/skills/`.
+À relancer après tout `git pull` qui modifie `setup/user-skills/` (voir `setup/README.md`).
 
 ---
 
@@ -56,6 +72,12 @@ memory/
 
 projects.yaml                 # Registre multi-projets
 
+setup/
+├── install.ps1                # Installe la skill product-orchestrator au niveau utilisateur
+├── README.md                  # Documentation d'installation
+└── user-skills/
+    └── product-orchestrator/SKILL.md   # Source versionnée de la skill user-level
+
 templates/
 └── product-agent-template/   # Template pour créer un nouveau projet
     ├── .github/copilot-instructions.md   # Instructions Copilot du projet (contrat complet)
@@ -80,7 +102,7 @@ templates/
 
 ### Mémoire et apprentissages
 
-- Les règles globales (`memory/global-learnings.yaml`) sont promues manuellement, après validation explicite de Florent.
+- Les règles globales (`memory/global-learnings.yaml`) sont promues manuellement, après validation explicite du PM.
 - Les apprentissages locaux sont dans `docs/learnings/learning-log.yaml` de chaque projet.
 - Par défaut, aucun apprentissage n'est créé.
 

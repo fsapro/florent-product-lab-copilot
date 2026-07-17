@@ -13,7 +13,7 @@ Objectif : co-construire un plan produit sans créer ni modifier de ressource Gi
 ## Instructions pour Copilot
 
 1. Lire `.github/copilot-instructions.md` pour les règles de gouvernance actives.
-2. Analyser le problème décrit par Florent.
+2. Analyser le problème décrit par le PM.
 3. Challenger le besoin : quel résultat produit est attendu ?
 4. Identifier les utilisateurs cibles.
 5. Définir le périmètre inclus et exclu.
@@ -26,7 +26,7 @@ Objectif : co-construire un plan produit sans créer ni modifier de ressource Gi
 ## Contraintes
 
 - Aucune ressource GitHub ne peut être créée dans ce mode.
-- Si Florent ne valide pas le plan explicitement, rester en mode DISCOVER.
+- Si le PM ne valide pas le plan explicitement, rester en mode DISCOVER.
 - Toute ambiguïté doit être posée comme question, pas assumée.
 
 ## Output attendu

@@ -15,7 +15,7 @@ Mode : CLOSE
 4. Confirmer que les contrôles CI passent.
 5. Vérifier que le verdict de vérification indépendante est enregistré pour les changements significatifs (voir la section correspondante de `.github/copilot-instructions.md`).
 6. Évaluer la capitalisation : un apprentissage local mérite-t-il d'être créé ? (voir `docs/learnings/README.md`)
-7. Fournir les instructions de validation produit finales à Florent.
+7. Fournir les instructions de validation produit finales au PM.
 
 ## Checklist de clôture
 

@@ -7,7 +7,7 @@ Il remplace la skill `product-project-orchestrator` utilisée dans la version pr
 
 ## Mission de l'orchestrateur
 
-Copilot coordonne, sur instruction explicite de Florent :
+Copilot coordonne, sur instruction explicite du PM :
 
 - le plan produit ;
 - le repository GitHub ;
@@ -16,7 +16,7 @@ Copilot coordonne, sur instruction explicite de Florent :
 - la validation produit ;
 - le registre `projects.yaml`.
 
-Copilot ne remplace pas Florent dans les décisions produit.
+Copilot ne remplace pas le PM dans les décisions produit.
 
 ---
 
@@ -41,11 +41,11 @@ Copilot ne remplace pas Florent dans les décisions produit.
 
 ### BOOTSTRAP
 
-**Objectif :** Initialiser un projet sur GitHub après validation explicite du plan par Florent, avec un repository immédiatement exploitable — jamais un repository vide de contenu.
+**Objectif :** Initialiser un projet sur GitHub après validation explicite du plan par le PM, avec un repository immédiatement exploitable — jamais un repository vide de contenu.
 
 **Prérequis :** plan approuvé explicitement, dossier cible dans `projects.yaml`.
 
-**Principe directeur :** le contenu du repository (scaffold) est poussé **avant** toute métadonnée GitHub qui le référence (issues, milestones). L'ordre inverse produit un repository dont le clone local est vide au moment où Florent l'ouvre, alors que des issues y font déjà référence — état incohérent et facilement manqué.
+**Principe directeur :** le contenu du repository (scaffold) est poussé **avant** toute métadonnée GitHub qui le référence (issues, milestones). L'ordre inverse produit un repository dont le clone local est vide au moment où le PM l'ouvre, alors que des issues y font déjà référence — état incohérent et facilement manqué.
 
 **Séquence obligatoire :**
 
@@ -59,7 +59,7 @@ Copilot ne remplace pas Florent dans les décisions produit.
 8. **Milestones.** Créer les milestones depuis les phases du plan approuvé.
 9. **Issues.** Créer les issues structurantes du **premier milestone uniquement** (pas toutes les phases d'un coup), rattachées au milestone correspondant.
 10. **GitHub Project.** Créer le Project et y rattacher les issues créées.
-11. **Confirmation.** Restituer à Florent : repository, contenu poussé, milestones, issues, Project — avec liens directs.
+11. **Confirmation.** Restituer au PM : repository, contenu poussé, milestones, issues, Project — avec liens directs.
 
 **Pièges connus (ne pas reproduire) :**
 
@@ -81,7 +81,7 @@ Copilot ne remplace pas Florent dans les décisions produit.
 2. Charger le plan produit depuis `docs/product/plan.md` du repository concerné.
 3. Récupérer les issues ouvertes et le GitHub Project.
 4. Identifier l'issue principale en cours ou la prochaine à traiter.
-5. Restituer un résumé d'état à Florent avant toute action.
+5. Restituer un résumé d'état au PM avant toute action.
 
 ---
 
@@ -100,7 +100,7 @@ Copilot ne remplace pas Florent dans les décisions produit.
 **Procedure :**
 1. Identifier l'écart entre l'état actuel et le plan approuvé.
 2. Proposer des ajustements de périmètre, de milestones ou de critères.
-3. Soumettre à validation explicite de Florent avant toute modification des issues ou du plan.
+3. Soumettre à validation explicite du PM avant toute modification des issues ou du plan.
 
 ---
 
@@ -146,7 +146,16 @@ Copilot ne remplace pas Florent dans les décisions produit.
 
 ## Invocation
 
-Décrire le mode souhaité et le nom du projet directement dans le chat Copilot.
+Deux niveaux d'invocation sont disponibles :
+
+- **User-level (cross-repo)** : si la skill `product-orchestrator` est installée
+  (`setup/install.ps1`), décrire le mode et le projet directement dans le chat
+  Copilot depuis n'importe quel repository. La skill détecte le contexte (repository
+  meta ou repository enfant) et route en conséquence — voir
+  `setup/user-skills/product-orchestrator/SKILL.md`.
+- **Local (ce repository uniquement)** : décrire le mode et le projet directement
+  dans le chat Copilot en ayant ce workspace ouvert ; les prompts `.github/prompts/`
+  sont invocables via `/discover`, `/bootstrap`, etc.
 
 Exemple : `RESUME florent-product-lab`
 

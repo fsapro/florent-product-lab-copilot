@@ -15,8 +15,8 @@ Projet : [nom du projet]
 3. Récupérer les issues ouvertes et le GitHub Project.
 4. Identifier l'unique issue `In progress` ou la prochaine issue `Ready`.
 5. Récupérer les pull requests ouvertes et leur état CI.
-6. Restituer un résumé d'état complet à Florent avant toute action.
-7. Attendre validation de Florent avant d'implémenter.
+6. Restituer un résumé d'état complet au PM avant toute action.
+7. Attendre validation du PM avant d'implémenter.
 
 ## Résumé d'état à fournir
 

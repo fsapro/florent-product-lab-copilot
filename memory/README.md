@@ -1,6 +1,6 @@
 # Mémoire globale
 
-Registre des règles actives partagées entre tous les projets du système d'exécution produit de Florent.
+Registre des règles actives partagées entre tous les projets du système d'exécution produit.
 
 ## Principe
 
@@ -18,7 +18,7 @@ Ce registre doit rester minuscule. Une mémoire globale volumineuse est un éche
 
 Un candidat de promotion globale n'est jamais collecté automatiquement. Il naît d'un apprentissage local déjà qualifié (`status: promotion_candidate`, `scope_candidate: global` dans le `docs/learnings/learning-log.yaml` d'un projet — voir `docs/copilot/learning-lifecycle.md` à la racine du repository).
 
-Aucun fichier de candidats séparé n'existe : la revue se fait par lecture directe du ou des `learning-log.yaml` concernés, à la demande explicite de Florent.
+Aucun fichier de candidats séparé n'existe : la revue se fait par lecture directe du ou des `learning-log.yaml` concernés, à la demande explicite du PM.
 
 ## Gate de promotion
 
@@ -32,7 +32,7 @@ Une règle ne devient active dans `global-learnings.yaml` que si toutes les cond
 - la portée n'est pas spécifique à un projet ;
 - aucune règle existante ne couvre déjà ce cas (vérification manuelle simple : relire `global-learnings.yaml`, qui reste volontairement petit) ;
 - aucune règle active ne la contredit ;
-- l'approbation explicite de Florent est enregistrée (`approved_by`, `approved_at`).
+- l'approbation explicite du PM est enregistrée (`approved_by`, `approved_at`).
 
 ## Seuil de promotion
 
@@ -56,7 +56,7 @@ exceptions:
 evidence:
   - project: project-slug
     issue: "<issue-reference>"
-approved_by: Florent
+approved_by: <pm>
 approved_at: "<ISO-8601>"
 review_when:
   - conflicting_evidence

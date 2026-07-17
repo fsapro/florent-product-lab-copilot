@@ -13,8 +13,8 @@ Mode : RESUME
 2. Récupérer les issues ouvertes et le GitHub Project associé.
 3. Identifier l'unique issue `In progress` ou la prochaine issue `Ready`.
 4. Récupérer les pull requests ouvertes et leur état CI.
-5. Restituer un résumé d'état complet à Florent avant toute action.
-6. Attendre validation de Florent avant d'implémenter.
+5. Restituer un résumé d'état complet au PM avant toute action.
+6. Attendre validation du PM avant d'implémenter.
 
 ## Résumé d'état à fournir
 

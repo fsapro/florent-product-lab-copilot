@@ -8,7 +8,7 @@ description: Initialiser un projet sur GitHub après validation explicite du pla
 Mode : BOOTSTRAP
 Projet : [nom du projet]
 
-Prérequis : plan produit validé explicitement par Florent.
+Prérequis : plan produit validé explicitement par le PM.
 
 Principe directeur : le repository ne doit jamais être laissé vide pendant que des métadonnées GitHub (issues, milestones) y font déjà référence. Le contenu (scaffold) est toujours poussé avant les métadonnées.
 
@@ -25,7 +25,7 @@ Principe directeur : le repository ne doit jamais être laissé vide pendant que
 9. Créer les milestones depuis les phases du plan approuvé.
 10. Créer les issues structurantes du **premier milestone uniquement**, rattachées à ce milestone.
 11. Créer le GitHub Project et y rattacher les issues créées.
-12. Confirmer l'état initial à Florent avec liens directs (repo, milestones, issues, Project).
+12. Confirmer l'état initial au PM avec liens directs (repo, milestones, issues, Project).
 
 ## Contraintes
 
@@ -43,4 +43,4 @@ Principe directeur : le repository ne doit jamais être laissé vide pendant que
 
 ## Output attendu
 
-Repository initialisé **avec contenu poussé et vérifié**, GitHub Project créé, milestones du plan créés, issues du premier milestone créées et rattachées, état confirmé à Florent avec liens directs.
+Repository initialisé **avec contenu poussé et vérifié**, GitHub Project créé, milestones du plan créés, issues du premier milestone créées et rattachées, état confirmé au PM avec liens directs.

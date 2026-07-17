@@ -14,7 +14,7 @@ Mode : REPLAN
 3. Analyser la cause : hypothèse invalidée, nouveau besoin, contrainte émergente.
 4. Proposer des ajustements au plan : périmètre, milestones, critères.
 5. Présenter les options avec leurs compromis.
-6. Attendre la validation explicite de Florent avant toute modification.
+6. Attendre la validation explicite du PM avant toute modification.
 
 ## Contraintes
 
@@ -24,4 +24,4 @@ Mode : REPLAN
 
 ## Output attendu
 
-Analyse de l'écart, options de replanification avec compromis, recommandation, prête pour arbitrage par Florent.
+Analyse de l'écart, options de replanification avec compromis, recommandation, prête pour arbitrage par le PM.

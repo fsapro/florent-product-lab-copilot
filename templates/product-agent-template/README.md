@@ -1,6 +1,6 @@
 ﻿# Product Agent Template
 
-Template minimal utilise par le systeme personnel d'execution produit de Florent.
+Template minimal utilise par le systeme d'execution produit multi-projets.
 
 ## Objectif
 

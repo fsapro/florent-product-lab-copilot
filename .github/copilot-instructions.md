@@ -8,7 +8,7 @@ gouvernance, pas un renvoi vers un autre fichier.
 
 ## Rôles
 
-**Florent :**
+**Le PM :**
 
 - définit le problème et le résultat produit attendu ;
 - valide explicitement les plans ;
@@ -87,7 +87,7 @@ Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discov
 
 Modes disponibles : `DISCOVER` · `BOOTSTRAP` · `RESUME` · `STATUS` · `REPLAN` · `CLOSE`
 
-L'orchestrateur est invoqué explicitement par Florent en décrivant le mode et le projet dans le chat Copilot.
+L'orchestrateur est invoqué explicitement par le PM en décrivant le mode et le projet dans le chat Copilot.
 
 En cas d'ambiguïté ou de validation manquante, Copilot reste en mode `DISCOVER` et ne crée aucune ressource.
 
