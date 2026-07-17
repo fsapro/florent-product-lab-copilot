@@ -33,17 +33,10 @@ Ce repository est conçu pour être utilisé avec GitHub Copilot en mode Agent d
 
 ### Modes disponibles
 
-| Mode | Usage |
-|---|---|
-| `DISCOVER` | Cadrer un nouveau projet sans créer de ressources |
-| `BOOTSTRAP` | Initialiser un projet après validation du plan |
-| `ADOPT` | Inscrire un projet existant (brownfield) dans le framework sans remettre en question le travail déjà fait |
-| `RESUME` | Reprendre un projet existant depuis GitHub |
-| `STATUS` | Restituer l'état d'un projet |
-| `REPLAN` | Proposer une évolution du plan |
-| `CLOSE` | Vérifier et clôturer un projet |
+Sept modes : `DISCOVER` · `BOOTSTRAP` · `ADOPT` · `RESUME` · `STATUS` · `REPLAN` · `CLOSE`.
 
-Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/adopt`, `/resume`, `/status`, `/replan`, `/close` dans Copilot Chat). La documentation détaillée des modes est dans `docs/copilot/orchestration.md`.
+Liste détaillée des prompts et slash-commands associés : [`.github/prompts/README.md`](.github/prompts/README.md).
+Documentation complète de chaque mode : [`docs/copilot/orchestration.md`](docs/copilot/orchestration.md).
 
 ---
 
