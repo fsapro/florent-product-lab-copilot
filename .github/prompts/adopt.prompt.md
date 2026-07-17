@@ -58,6 +58,7 @@ Si le code existe déjà en local mais qu'aucun repository GitHub cible n'existe
 - Ne jamais effectuer d'opération git destructive (force-push, réécriture d'historique, suppression de branche).
 - Ne jamais pousser directement sur la branche par défaut d'un repository ayant des collaborateurs ou une protection de branche sans confirmation explicite du PM.
 - Ne jamais relancer ADOPT sur un projet déjà marqué `origin: adopted` sans avertir le PM.
+- Avant tout commit, inspecter explicitement `git status` / `git diff --stat` et ne stager que les fichiers de gouvernance ajoutés par ADOPT. Ne jamais utiliser `git add -A` sans cette revue — le repository cible peut déjà contenir des changements non liés (autre session, autre projet) qui ne doivent jamais se retrouver inclus silencieusement.
 
 ## Pièges connus
 

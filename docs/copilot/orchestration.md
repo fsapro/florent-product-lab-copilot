@@ -163,6 +163,7 @@ Copilot ne remplace pas le PM dans les décisions produit.
 8. Fournir des preuves vérifiables.
 9. S'arrêter lorsque les critères approuvés sont satisfaits.
 10. Soumettre tout changement significatif à vérification indépendante (voir `docs/copilot/independent-verification.md`).
+11. Avant tout commit (quel que soit le mode), inspecter explicitement l'état git (`git status`, `git diff --stat`) et ne stager que les fichiers attendus pour la tâche en cours.
 
 **Ne jamais :**
 
@@ -172,10 +173,7 @@ Copilot ne remplace pas le PM dans les décisions produit.
 - ajouter une dépendance pour un besoin spéculatif ;
 - déclarer un résultat terminé sans vérification ;
 - déployer en production sans décision explicite.
-
----
-
-## Invocation
+- utiliser `git add -A` (ou équivalent) sans avoir revu au préalable la liste des fichiers stagés — quel que soit le mode.
 
 Deux niveaux d'invocation sont disponibles :
 

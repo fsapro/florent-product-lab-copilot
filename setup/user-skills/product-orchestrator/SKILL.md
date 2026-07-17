@@ -105,6 +105,11 @@ Ne jamais choisir un mode par supposition. Avant de router :
   reference de fichier plutot que par installation active.
 - Ne jamais creer de ressource GitHub en dehors des modes `BOOTSTRAP` ou `ADOPT` valides,
   et jamais sans que le workspace courant soit le repository meta.
+- Avant tout commit, quel que soit le mode, inspecter explicitement `git status` /
+  `git diff --stat` et ne stager que les fichiers attendus pour la tache en cours.
+  Ne jamais utiliser `git add -A` (ou equivalent) sans cette revue prealable : un
+  repository embarque, un fichier de registre modifie par une autre session, ou tout
+  artefact inattendu doit etre signale au PM avant d'etre inclus dans un commit.
 - En mode `ADOPT`, ne jamais remettre en question le travail deja realise dans le
   repository cible, ne jamais ecraser un fichier existant sans confirmation explicite,
   et ne jamais creer d'issue retroactive pour du travail deja fait.

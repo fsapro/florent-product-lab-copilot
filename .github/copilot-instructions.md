@@ -38,6 +38,7 @@ gouvernance, pas un renvoi vers un autre fichier.
 9. Exécuter les contrôles avant de déclarer une tâche terminée.
 10. S'arrêter lorsque les critères d'acceptation sont satisfaits.
 11. Faire vérifier un changement significatif par un agent ou une session distincte de l'implémenteur avant validation produit.
+12. Avant tout commit, inspecter explicitement l'état git (`git status`, `git diff --stat`) et ne stager que les fichiers directement liés à la tâche en cours. Ne jamais utiliser `git add -A` (ou équivalent) sans cette revue préalable — un repository embarqué, un fichier de registre modifié par une autre session, ou tout artefact inattendu doit être signalé au PM avant d'être inclus dans un commit.
 
 ---
 

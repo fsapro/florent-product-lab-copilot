@@ -33,6 +33,7 @@ Principe directeur : le repository ne doit jamais être laissé vide pendant que
 - Confirmer chaque ressource GitHub majeure avant création.
 - Ne créer que les issues du premier milestone, pas toutes les phases.
 - Ne jamais annoncer un bootstrap "terminé" sans avoir vérifié que le repository contient du contenu réel (pas seulement des métadonnées GitHub).
+- Avant tout commit, inspecter explicitement `git status` / `git diff --stat` et ne stager que les fichiers du scaffold attendu. Ne jamais utiliser `git add -A` sans cette revue — un artefact d'une autre session ou d'un autre projet ne doit jamais se retrouver inclus.
 
 ## Pièges connus
 

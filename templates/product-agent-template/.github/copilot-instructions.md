@@ -44,7 +44,8 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 6. Implémenter uniquement le périmètre de l'issue.
 7. Exécuter les contrôles applicables.
 8. Relire le diff.
-9. Mettre à jour l'issue, la pull request et le Project.
+9. Avant de committer : inspecter explicitement `git status` / `git diff --stat` et ne stager que les fichiers directement liés à l'issue en cours. Ne jamais utiliser `git add -A` (ou équivalent) sans cette revue préalable — tout artefact inattendu (repository embarqué, fichier hors périmètre, changement d'une autre session) doit être signalé au PM avant d'être inclus dans le commit.
+10. Mettre à jour l'issue, la pull request et le Project.
 
 ---
 
