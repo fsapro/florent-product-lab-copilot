@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Cadrer un nouveau projet sans créer de ressources GitHub
 ---
 

@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Reprendre un projet existant depuis l'état GitHub
 ---
 

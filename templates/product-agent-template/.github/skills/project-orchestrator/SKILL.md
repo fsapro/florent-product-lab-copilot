@@ -8,7 +8,12 @@ argument-hint: '<MODE optionnel>'
 
 Point d'entree unique pour reprendre ce projet. Ce skill ne duplique pas la logique de
 chaque mode (elle vit dans `.github/prompts/*.prompt.md`) — il **detecte l'etat** et
-route vers le bon mode avant de l'executer.
+route vers le bon mode.
+
+Les prompt files `.github/prompts/*.prompt.md` sont des entrees natives dans VS Code
+quand cette surface les prend en charge. Dans Copilot CLI, cette skill porte elle-meme
+le routage ; elle peut consulter les prompt files comme ressources textuelles
+accessibles, mais ne les execute pas nativement comme commandes de prompt.
 
 `DISCOVER` et `BOOTSTRAP` n'existent pas ici : ce sont des modes du repository meta
 (creation de ressources GitHub cross-projets, registre `projects.yaml`). Ce repository
@@ -26,12 +31,13 @@ Ne jamais choisir un mode par supposition. Avant de router :
 ## Procedure de routage
 
 1. **Si le mode est explicitement donne** (RESUME/STATUS/REPLAN/CLOSE) : verifier sa
-   coherence avec l'etat detecte a l'etape 0 avant d'executer (voir tableau ci-dessous).
+   coherence avec l'etat detecte a l'etape 0 avant de continuer (voir tableau ci-dessous).
    Si incoherent, le signaler et demander confirmation avant de continuer.
 2. **Si aucun mode n'est donne** : deduire le mode le plus probable a partir de l'etat
    detecte (issues ouvertes, PRs en cours, ecart plan/realite), puis le proposer avant
    de l'executer — ne jamais executer un mode devine sans confirmation.
-3. **Executer** le mode retenu en suivant `.github/prompts/<mode>.prompt.md`.
+3. Traiter le mode retenu en consultant `.github/prompts/<mode>.prompt.md` comme
+   procedure textuelle en Copilot CLI, ou comme prompt file natif dans VS Code.
 
 ## Arbre de decision (etat -> mode probable)
 
@@ -51,9 +57,17 @@ Ne jamais choisir un mode par supposition. Avant de router :
 
 ## References
 
-- Procedures executables : [.github/prompts/resume.prompt.md](../../prompts/resume.prompt.md), [status.prompt.md](../../prompts/status.prompt.md), [replan.prompt.md](../../prompts/replan.prompt.md), [close.prompt.md](../../prompts/close.prompt.md)
+- Procedures VS Code natives et ressources textuelles pour Copilot CLI : [.github/prompts/resume.prompt.md](../../prompts/resume.prompt.md), [status.prompt.md](../../prompts/status.prompt.md), [replan.prompt.md](../../prompts/replan.prompt.md), [close.prompt.md](../../prompts/close.prompt.md)
 - Contrat de gouvernance : [.github/copilot-instructions.md](../../copilot-instructions.md)
 - Vérification indépendante : [docs/independent-verification.md](../../../docs/independent-verification.md)
+
+## Autonomie Copilot CLI
+
+Cette skill est autonome pour la collecte d'etat locale, la verification de coherence
+et le routage entre RESUME, STATUS, REPLAN et CLOSE. Elle depend encore des prompt
+files pour le detail operationnel de chaque mode ; en Copilot CLI, ces fichiers doivent
+donc etre lus comme ressources textuelles accessibles et non comme prompt files
+executes nativement.
 
 ## Contraintes
 

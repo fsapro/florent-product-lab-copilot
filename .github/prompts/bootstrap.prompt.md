@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Initialiser un projet sur GitHub après validation explicite du plan
 ---
 
