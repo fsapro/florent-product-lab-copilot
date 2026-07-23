@@ -13,10 +13,11 @@ jusqu'à un projet prêt pour le développement :
 
 1. cadrer le besoin sans créer prématurément de ressources GitHub ;
 2. initialiser un repository projet avec sa gouvernance Copilot ;
-3. créer les premiers milestones, issues et Project GitHub ;
-4. reprendre l'état réel depuis GitHub ;
-5. faire évoluer le plan si le contexte change ;
-6. vérifier et clôturer un projet.
+3. créer les premiers milestones, issues de Solution Design/préparation et Project GitHub ;
+4. produire et faire valider un Solution Design proportionné avant toute issue de développement ;
+5. reprendre l'état réel depuis GitHub ;
+6. faire évoluer le plan si le contexte change ;
+7. vérifier et clôturer un projet.
 
 Le comportement détaillé de chaque mode vit dans les prompts. La documentation décrit
 le système ; elle ne remplace pas les procédures opérationnelles.
@@ -90,6 +91,8 @@ Vue synthétique de l'orchestration : [`docs/copilot/orchestration.md`](docs/cop
 | `.github/prompts/*.prompt.md` | Détail opérationnel des procédures du repository central. |
 | `templates/product-agent-template/` | Template complet injecté dans les nouveaux repositories projets. |
 | `templates/product-agent-template/.github/skills/project-orchestrator/SKILL.md` | Skill locale des projets enfants : reprise, statut, replanification et clôture. |
+| `templates/product-agent-template/.github/skills/solution-design/SKILL.md` | Skill locale de production du Solution Design. |
+| `templates/product-agent-template/.github/skills/architecture-review/SKILL.md` | Skill locale de revue indépendante du Solution Design. |
 | `projects.yaml` | Registre des projets suivis. |
 | `memory/global-learnings.yaml` | Règles globales promues manuellement après validation. |
 
@@ -129,7 +132,12 @@ templates/
     ├── .github/copilot-instructions.md
     ├── .github/prompts/
     ├── .github/skills/project-orchestrator/SKILL.md
+    ├── .github/skills/solution-design/SKILL.md
+    ├── .github/skills/architecture-review/SKILL.md
     ├── docs/product/plan.md
+    ├── docs/solution-design/solution-design.md
+    ├── docs/architecture/
+    ├── docs/implementation-plan.md
     ├── docs/decisions/
     ├── docs/learnings/
     ├── docs/independent-verification.md
@@ -141,6 +149,7 @@ templates/
 | Source | Localisation |
 |---|---|
 | Plan produit d'un projet | `docs/product/plan.md` dans le repository projet |
+| Solution Design approuvé | `docs/solution-design/solution-design.md` dans le repository projet |
 | Travail et avancement | GitHub Issues et GitHub Project |
 | Implémentation et preuves | Pull requests et CI |
 | Décisions | `docs/decisions/` du repository projet |
@@ -153,6 +162,7 @@ templates/
 - Aucune ressource GitHub n'est créée avant validation explicite du plan.
 - Une demande de nouveau projet passe par `DISCOVER` avant toute implémentation.
 - Le mode `BOOTSTRAP` pousse et vérifie le scaffold avant de créer milestones, issues et Project.
+- Aucun développement fonctionnel ne démarre avant `Solution Design: Approved`.
 - Une seule issue principale peut être en cours d'implémentation.
 - L'état est repris depuis GitHub et `projects.yaml`, jamais depuis la mémoire du chat seule.
 - Copilot gère Git et les Pull Requests de manière autonome ; le PM valide le produit, pas le code ni les diffs.
@@ -160,6 +170,7 @@ templates/
 ## Créer ou reprendre un projet
 
 - Nouveau projet : lancer `DISCOVER <nom>`, faire valider le plan, puis `BOOTSTRAP <nom>`.
+  Le développement commence seulement après Solution Design, revue indépendante et validation PM.
 - Projet existant hors framework : lancer `ADOPT <nom>`.
 - Projet déjà enregistré : lancer `RESUME <nom>` ou `STATUS <nom>`.
 

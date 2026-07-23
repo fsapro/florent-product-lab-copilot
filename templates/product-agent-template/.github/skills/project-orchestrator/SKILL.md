@@ -24,9 +24,10 @@ a deja ete bootstrappe.
 Ne jamais choisir un mode par supposition. Avant de router :
 
 1. Lire `docs/product/plan.md` (plan approuve).
-2. Executer `gh issue list --state open` pour ce repository.
-3. Verifier le GitHub Project associe et les pull requests ouvertes (`gh pr list`).
-4. Identifier l'unique issue `In progress`, s'il y en a une.
+2. Verifier le statut de `docs/solution-design/solution-design.md`.
+3. Executer `gh issue list --state open` pour ce repository.
+4. Verifier le GitHub Project associe et les pull requests ouvertes (`gh pr list`).
+5. Identifier l'unique issue `In progress`, s'il y en a une.
 
 ## Procedure de routage
 
@@ -44,6 +45,7 @@ Ne jamais choisir un mode par supposition. Avant de router :
 | Etat detecte | Mode probable |
 |---|---|
 | Reprise de session, issues ouvertes ou en cours | `RESUME` |
+| Plan approuve, Solution Design absent ou non approuve | skill `solution-design` |
 | Demande d'etat sans intention d'agir | `STATUS` |
 | Ecart constate entre le plan approuve (`docs/product/plan.md`) et la realite observee | `REPLAN` |
 | Tous les criteres d'acceptation du milestone final semblent couverts | `CLOSE` |
@@ -73,6 +75,8 @@ executes nativement.
 
 - Ne jamais executer un mode sans avoir explicite l'etat detecte et obtenu confirmation
   si ce n'est pas le PM qui a nomme le mode lui-meme.
+- Ne jamais demarrer de developpement fonctionnel tant que
+  `docs/solution-design/solution-design.md` n'est pas au statut `Approved`.
 - Pour les branches, commits, push, Pull Requests, corrections et fusions, appliquer
   la regle de gestion autonome de Git et des Pull Requests de
   `.github/copilot-instructions.md`.

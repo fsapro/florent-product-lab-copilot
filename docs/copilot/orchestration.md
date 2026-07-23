@@ -25,6 +25,19 @@ pas une procédure exécutable.
 | `REPLAN` | Proposer une évolution du plan après écart ou changement de contexte. | `.github/prompts/replan.prompt.md` |
 | `CLOSE` | Vérifier les critères, clôturer et capitaliser si nécessaire. | `.github/prompts/close.prompt.md` |
 
+## Workflow de delivery
+
+Le workflow cible est :
+
+PRD → Solution Design → revue indépendante → validation PM → ADR nécessaires → plan
+d'implémentation → issues → développement → tests proportionnés → contrôle de
+conformité au design → Pull Request → fusion → mise à jour documentaire.
+
+`BOOTSTRAP` conserve l'ordre validé : le scaffold est poussé et vérifié avant les
+milestones, issues et Project. Les issues créées au bootstrap restent limitées à
+Solution Design / préparation ; aucune issue de développement ne devient `Ready` avant
+`Solution Design: Approved`.
+
 ## Invocation
 
 - **Copilot CLI** : utiliser la skill `product-orchestrator` si elle est installée

@@ -19,3 +19,10 @@ dans Copilot Chat (VS Code), en plus du copier-coller manuel ou de la référenc
 `florent-product-lab-copilot` (création de ressources GitHub cross-projets, registre
 `projects.yaml`). Ce repository projet a déjà été bootstrappé — le travail continue avec
 `resume`, `status`, `replan` et `close`.
+
+## Gate Solution Design
+
+Aucun développement fonctionnel ne démarre tant que
+`docs/solution-design/solution-design.md` n'est pas au statut `Approved`. Utiliser la
+skill `solution-design` pour produire le design et `architecture-review` pour la revue
+indépendante.

@@ -12,13 +12,24 @@ Closes #
 
 - [ ] Critère 1
 
+## Conformité design
+
+- Solution Design approuvé : oui / non / non applicable
+- ADR applicables respectés : oui / non / non applicable
+- Exigences non fonctionnelles concernées couvertes : oui / non / non applicable
+- Nouvelles dépendances justifiées : oui / non / non applicable
+- Sobriété du code vérifiée : oui / non
+- Documentation mise à jour si nécessaire : oui / non / non applicable
+
 ## Vérifications
 
 - [ ] Formatage
 - [ ] Lint
 - [ ] Type check
 - [ ] Tests ciblés
-- [ ] Tests complets si nécessaires
+- [ ] Tests niveau 1
+- [ ] Tests niveau 2 si risque/périmètre
+- [ ] Tests niveau 3 si release ou changement structurant
 - [ ] Build si applicable
 - [ ] Vérification visuelle si applicable
 
@@ -29,6 +40,8 @@ Closes #
 - Nouvelle abstraction : non
 - Refactoring hors périmètre : non
 - Alternative native ou existante vérifiée : oui
+- Composant open source évalué si custom significatif : oui / non applicable
+- Authentification/sujet sensible basé sur une solution standard adaptée : oui / non applicable
 
 ## Vérification indépendante
 
