@@ -58,8 +58,7 @@ Documentation complète de chaque mode : [`docs/copilot/orchestration.md`](docs/
 docs/copilot/
 ├── orchestration.md          # Workflows DISCOVER/BOOTSTRAP/ADOPT/RESUME/STATUS/REPLAN/CLOSE
 ├── learning-lifecycle.md     # Cycle de vie des apprentissages locaux
-├── independent-verification.md  # Niveaux de vérification indépendante
-└── MIGRATION_FROM_CLAUDE.md  # Rapport de migration depuis la version Claude
+└── independent-verification.md  # Niveaux de vérification indépendante
 
 memory/
 ├── global-learnings.yaml     # Règles globales actives (multi-projets)

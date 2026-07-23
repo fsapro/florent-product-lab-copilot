@@ -1,6 +1,6 @@
 # Cycle de vie d'un apprentissage local
 
-Référence locale à ce projet (copie adaptée de `docs/copilot/learning-lifecycle.md` du
+Référence locale à ce projet (copie adaptée de `docs/learning-lifecycle.md` du
 repository méta `florent-product-lab-copilot`). Ce document couvre le registre local
 d'apprentissage de ce projet. La mémoire globale et la promotion inter-projets sont hors
 périmètre à ce stade.

@@ -12,7 +12,7 @@ Ce registre doit rester petit et exploitable. Une mémoire bruitée par de nombr
 
 ## Cycle de vie
 
-Voir `docs/copilot/learning-lifecycle.md` (à la racine du repository) pour le modèle de données complet, les statuts, les portées et les catégories.
+Voir `docs/learning-lifecycle.md` (à la racine du repository) pour le modèle de données complet, les statuts, les portées et les catégories.
 
 ## Format
 
