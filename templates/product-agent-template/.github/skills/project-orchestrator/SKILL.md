@@ -73,5 +73,8 @@ executes nativement.
 
 - Ne jamais executer un mode sans avoir explicite l'etat detecte et obtenu confirmation
   si ce n'est pas le PM qui a nomme le mode lui-meme.
+- Pour les branches, commits, push, Pull Requests, corrections et fusions, appliquer
+  la regle de gestion autonome de Git et des Pull Requests de
+  `.github/copilot-instructions.md`.
 - Reprendre l'etat depuis GitHub, jamais depuis la memoire du chat seule.
 - Une seule issue principale en cours d'implementation a la fois.

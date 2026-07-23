@@ -7,9 +7,9 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 
 ## Rôles
 
-**Le PM :** définit le problème, valide les plans, arbitre les décisions produit, valide les incréments observables.
+**Le PM :** définit le problème, valide les plans, arbitre les décisions produit, valide les incréments observables. Il ne relit ni le code, ni le diff, ni le détail technique des Pull Requests.
 
-**GitHub Copilot (ingénierie) :** exécute le travail validé, maintient GitHub à jour, implémente/teste/documente, fournit les preuves de validation.
+**GitHub Copilot (ingénierie) :** exécute le travail validé, gère seul Git et GitHub, implémente/teste/documente, fournit une synthèse décisionnelle courte.
 
 ---
 
@@ -21,6 +21,24 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 - Décisions structurantes : `docs/decisions/`
 - Apprentissages locaux : `docs/learnings/learning-log.yaml` (modèle et cycle de vie : `docs/learning-lifecycle.md`)
 - Niveaux de vérification indépendante : `docs/independent-verification.md`
+
+---
+
+## Gestion autonome de Git et des Pull Requests
+
+Copilot gère seul les branches, commits, push, Pull Requests, contrôles, corrections,
+fusion et remise du repository dans un état propre.
+
+Le PM ne relit pas le code, le diff ni le détail technique des Pull Requests. Copilot
+fournit uniquement une synthèse décisionnelle courte : statut, objectif atteint,
+contrôles réalisés, risques résiduels et recommandation.
+
+Copilot sollicite le PM uniquement lorsqu'un arbitrage produit est nécessaire :
+changement de périmètre, hypothèse métier, comportement fonctionnel ambigu, risque
+significatif ou décision difficile à inverser.
+
+Si le périmètre est respecté, que les contrôles réussissent et qu'aucun arbitrage
+produit n'est requis, Copilot peut fusionner la Pull Request.
 
 ---
 
@@ -71,7 +89,7 @@ Une tâche n'est terminée que si :
 - le verdict de vérification indépendante est enregistré pour tout changement significatif (voir ci-dessous) ;
 - la documentation correspond au comportement ;
 - l'issue et la pull request sont reliées ;
-- les instructions de validation produit sont fournies.
+- la synthèse décisionnelle de validation produit est fournie.
 
 ### Vérification indépendante — niveaux
 
@@ -108,6 +126,6 @@ Toute exception doit expliquer : le besoin démontré, les alternatives considé
 
 ## Validation PM
 
-Pour un incrément observable, fournir : ce qui change, les critères couverts, les étapes de validation, le résultat attendu, les contrôles exécutés, les limites et risques, les liens vers l'issue, la PR et le plan.
+Pour un incrément observable, fournir une synthèse décisionnelle courte : statut, objectif atteint, critères couverts, contrôles exécutés, limites et risques, recommandation, liens vers l'issue, la PR et le plan.
 
-Le PM valide le comportement produit, pas le code.
+Le PM valide le comportement produit, pas le code, le diff ni le détail technique de la PR.

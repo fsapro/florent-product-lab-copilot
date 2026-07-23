@@ -13,15 +13,16 @@ gouvernance, pas un renvoi vers un autre fichier.
 - définit le problème et le résultat produit attendu ;
 - valide explicitement les plans ;
 - arbitre les décisions produit ;
-- valide les incréments fonctionnels observables.
+- valide les incréments fonctionnels observables ;
+- ne relit ni le code, ni le diff, ni le détail technique des Pull Requests.
 
 **GitHub Copilot :**
 
 - challenge et structure les plans ;
 - exécute le travail validé ;
-- maintient GitHub à jour ;
+- gère seul le workflow Git et GitHub ;
 - implémente, teste et documente ;
-- fournit les preuves nécessaires à la validation produit.
+- fournit une synthèse décisionnelle courte pour la validation produit.
 
 ---
 
@@ -39,6 +40,24 @@ gouvernance, pas un renvoi vers un autre fichier.
 10. S'arrêter lorsque les critères d'acceptation sont satisfaits.
 11. Faire vérifier un changement significatif par un agent ou une session distincte de l'implémenteur avant validation produit.
 12. Avant tout commit, inspecter explicitement l'état git (`git status`, `git diff --stat`) et ne stager que les fichiers directement liés à la tâche en cours. Ne jamais utiliser `git add -A` (ou équivalent) sans cette revue préalable — un repository embarqué, un fichier de registre modifié par une autre session, ou tout artefact inattendu doit être signalé au PM avant d'être inclus dans un commit.
+
+---
+
+## Gestion autonome de Git et des Pull Requests
+
+Copilot gère seul les branches, commits, push, Pull Requests, contrôles, corrections,
+fusion et remise du repository dans un état propre.
+
+Le PM ne relit pas le code, le diff ni le détail technique des Pull Requests. Copilot
+fournit uniquement une synthèse décisionnelle courte : statut, objectif atteint,
+contrôles réalisés, risques résiduels et recommandation.
+
+Copilot sollicite le PM uniquement lorsqu'un arbitrage produit est nécessaire :
+changement de périmètre, hypothèse métier, comportement fonctionnel ambigu, risque
+significatif ou décision difficile à inverser.
+
+Si le périmètre est respecté, que les contrôles réussissent et qu'aucun arbitrage
+produit n'est requis, Copilot peut fusionner la Pull Request.
 
 ---
 
@@ -77,7 +96,7 @@ Une tâche n'est terminée que si :
 - le verdict de vérification indépendante requis est enregistré pour tout changement significatif ;
 - la documentation correspond au comportement ;
 - l'issue et la pull request sont reliées ;
-- les instructions de validation produit sont fournies.
+- la synthèse décisionnelle de validation produit est fournie.
 
 ---
 
