@@ -96,7 +96,7 @@ accessibles, mais ne les execute pas nativement comme commandes de prompt.
 
 ## References
 
-- Documentation complete de chaque mode : `docs/copilot/orchestration.md` du repository meta.
+- Documentation synthetique des modes : `docs/copilot/orchestration.md` du repository meta.
 - Procedures VS Code natives et ressources textuelles pour Copilot CLI :
   `.github/prompts/*.prompt.md` du repository meta ou du repository enfant selon le contexte.
 - Registre multi-projets : `projects.yaml` du repository meta.
