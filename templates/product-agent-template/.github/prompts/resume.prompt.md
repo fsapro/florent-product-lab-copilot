@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Reprendre l'état du projet depuis GitHub (issues, Project, PRs)
 ---
 

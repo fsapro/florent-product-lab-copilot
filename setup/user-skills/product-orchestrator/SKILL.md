@@ -57,21 +57,26 @@ Ne jamais choisir un mode par supposition. Avant de router :
 
 ## Procedure de routage
 
+Les prompt files `.github/prompts/*.prompt.md` sont des entrees natives dans VS Code
+quand cette surface les prend en charge. Dans Copilot CLI, cette skill porte elle-meme
+le routage ; elle peut consulter les prompt files comme ressources textuelles
+accessibles, mais ne les execute pas nativement comme commandes de prompt.
+
 1. **Identifier le projet** depuis l'argument fourni, ou le demander si ambigu.
 2. **Determiner le contexte** (etape 0) : repository meta ou repository enfant.
 3. **Si le mode demande est DISCOVER, BOOTSTRAP ou ADOPT** :
    - Ces modes necessitent `projects.yaml` (cross-projets). Si le workspace courant
      n'est pas le repository meta, indiquer d'ouvrir `florent-product-lab-copilot`
      plutot que d'improviser une creation de ressource GitHub locale.
-   - Si c'est bien le repository meta, executer `.github/prompts/discover.prompt.md`,
-     `.github/prompts/bootstrap.prompt.md` ou `.github/prompts/adopt.prompt.md` selon
-     le mode demande.
+   - Si c'est bien le repository meta, appliquer le routage de cette skill et consulter
+     `.github/prompts/discover.prompt.md`, `.github/prompts/bootstrap.prompt.md` ou
+     `.github/prompts/adopt.prompt.md` comme procedure textuelle selon le mode demande.
 4. **Si le mode demande est RESUME, STATUS, REPLAN ou CLOSE** :
    - Si une skill locale `project-orchestrator` existe dans le repository courant,
      la deleguer (elle a le contexte complet du plan et des issues locales).
-   - Sinon, executer directement le prompt correspondant du repository courant
+   - Sinon, consulter le prompt correspondant du repository courant
      (`.github/prompts/<mode>.prompt.md`) s'il existe, ou l'equivalent du
-     repository meta si on y travaille.
+     repository meta si on y travaille, comme procedure textuelle.
 5. **Si aucun mode n'est donne** : deduire le mode le plus probable a partir de
    l'etat detecte (voir arbre de decision ci-dessous), puis le proposer avant de
    l'executer — ne jamais executer un mode devine sans confirmation explicite.
@@ -92,8 +97,16 @@ Ne jamais choisir un mode par supposition. Avant de router :
 ## References
 
 - Documentation complete de chaque mode : `docs/copilot/orchestration.md` du repository meta.
-- Procedures executables : `.github/prompts/*.prompt.md` du repository meta ou du repository enfant selon le contexte.
+- Procedures VS Code natives et ressources textuelles pour Copilot CLI :
+  `.github/prompts/*.prompt.md` du repository meta ou du repository enfant selon le contexte.
 - Registre multi-projets : `projects.yaml` du repository meta.
+
+## Autonomie Copilot CLI
+
+Cette skill est autonome pour la collecte d'etat, la selection du contexte et le
+routage entre modes. Elle depend encore des prompt files pour le detail operationnel
+des procedures de chaque mode ; en Copilot CLI, ces fichiers doivent donc etre lus
+comme ressources textuelles accessibles et non comme prompt files executes nativement.
 
 ## Contraintes
 

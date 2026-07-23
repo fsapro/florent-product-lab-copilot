@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Vérifier et clôturer le projet
 ---
 

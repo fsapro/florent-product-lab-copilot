@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Inscrire un projet existant (brownfield) dans le framework sans remettre en question le travail déjà fait
 ---
 

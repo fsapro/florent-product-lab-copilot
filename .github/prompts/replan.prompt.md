@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Proposer une évolution du plan après un changement de contexte
 ---
 
