@@ -88,6 +88,7 @@ accessibles, mais ne les execute pas nativement comme commandes de prompt.
 | Projet absent de `projects.yaml`, aucun plan approuve | `DISCOVER` |
 | Workspace ambigu (ni meta, ni enfant bootstrappe), demande de type « nouveau projet » sans nom ni plan | `DISCOVER` (a mener dans le repository meta, jamais localement) |
 | Projet dans `projects.yaml`, plan approuve, mais aucun repository/issue GitHub cree | `BOOTSTRAP` |
+| Repository projet bootstrappe, plan approuve, Solution Design absent ou non approuve | `RESUME` puis skill locale `solution-design` |
 | Repository existant (code/historique) sans gouvernance Copilot ni entree `projects.yaml` | `ADOPT` |
 | Repository existant, issues ouvertes, pas de session recente | `RESUME` |
 | Demande d'etat sans intention d'agir | `STATUS` |
@@ -118,6 +119,8 @@ comme ressources textuelles accessibles et non comme prompt files executes nativ
   reference de fichier plutot que par installation active.
 - Ne jamais creer de ressource GitHub en dehors des modes `BOOTSTRAP` ou `ADOPT` valides,
   et jamais sans que le workspace courant soit le repository meta.
+- Ne jamais demarrer de developpement fonctionnel dans un repository projet tant que
+  `docs/solution-design/solution-design.md` n'est pas au statut `Approved`.
 - Avant tout commit, quel que soit le mode, inspecter explicitement `git status` /
   `git diff --stat` et ne stager que les fichiers attendus pour la tache en cours.
   Ne jamais utiliser `git add -A` (ou equivalent) sans cette revue prealable : un

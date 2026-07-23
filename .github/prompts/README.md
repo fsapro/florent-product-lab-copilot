@@ -20,6 +20,12 @@ Ces 7 prompts sont spécifiques au repository méta (`florent-product-lab-copilo
 
 Les projets enfants (créés depuis `templates/product-agent-template/`) disposent de leur propre `.github/prompts/` avec une version adaptée de `resume`, `status`, `replan` et `close` — sans dépendance à `projects.yaml` puisque le repo enfant connaît déjà son propre plan et ses propres issues.
 
-## Documentation complète
+## Gate Solution Design
 
-Voir `docs/copilot/orchestration.md` pour la description détaillée de chaque mode.
+Après bootstrap, aucun développement fonctionnel ne démarre dans un projet enfant tant
+que son Solution Design n'est pas `Approved`.
+
+## Documentation
+
+Voir `docs/copilot/orchestration.md` pour la vue synthétique des modes. Les procédures
+d'autorité sont les prompts eux-mêmes.

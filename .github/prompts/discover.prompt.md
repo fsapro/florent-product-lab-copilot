@@ -20,8 +20,9 @@ Objectif : co-construire un plan produit sans créer ni modifier de ressource Gi
 6. Formaliser les hypothèses et les risques.
 7. Proposer des critères d'acceptation initiaux.
 8. Proposer les milestones.
-9. Identifier les décisions ouvertes nécessitant une arbitrage.
+9. Identifier les décisions ouvertes nécessitant un arbitrage.
 10. Rédiger un brouillon de plan si demandé.
+11. Préparer le passage vers Solution Design : inconnues, risques, options à comparer, domaines d'architecture concernés.
 
 ## Contraintes
 
@@ -31,4 +32,6 @@ Objectif : co-construire un plan produit sans créer ni modifier de ressource Gi
 
 ## Output attendu
 
-Un plan produit structuré prêt pour validation, incluant : objectif, utilisateurs, périmètre inclus/exclu, hypothèses, risques, critères d'acceptation initiaux, milestones proposées, décisions ouvertes.
+Un plan produit structuré prêt pour validation et pour Solution Design, incluant :
+objectif, utilisateurs, périmètre inclus/exclu, hypothèses, risques, critères
+d'acceptation initiaux, milestones proposées, décisions ouvertes et inconnues de design.

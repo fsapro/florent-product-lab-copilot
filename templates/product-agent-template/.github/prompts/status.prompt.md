@@ -10,9 +10,10 @@ Mode : STATUS
 ## Instructions pour Copilot
 
 1. Charger `docs/product/plan.md`.
-2. Récupérer les issues du GitHub Project (ouvertes et fermées par milestone).
-3. Récupérer les PRs ouvertes.
-4. Restituer le tableau de bord complet.
+2. Lire le statut du Solution Design et du plan d'implémentation.
+3. Récupérer les issues du GitHub Project (ouvertes et fermées par milestone).
+4. Récupérer les PRs ouvertes.
+5. Restituer le tableau de bord complet.
 
 ## Output attendu
 
@@ -23,6 +24,7 @@ Mode : STATUS
 | Issues fermées | Nombre par milestone |
 | PRs ouvertes | Titre, CI, révision |
 | Alignement plan | Écarts identifiés entre l'état actuel et le plan approuvé |
+| Solution Design | Statut, niveau, revue, validation PM, blocages |
 | Risques actifs | Risques ouverts identifiés dans le plan |
 
 ## Contraintes
