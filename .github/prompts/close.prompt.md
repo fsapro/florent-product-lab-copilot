@@ -17,7 +17,7 @@ Projet : [nom du projet]
 5. Vérifier que le verdict de vérification indépendante est enregistré pour les changements significatifs (voir `docs/copilot/independent-verification.md`).
 6. Évaluer la capitalisation : un apprentissage local mérite-t-il d'être créé ? (voir `docs/copilot/learning-lifecycle.md`)
 7. Mettre à jour `projects.yaml` avec le statut `closed`.
-8. Fournir les instructions de validation produit finales au PM.
+8. Fournir la synthèse décisionnelle finale au PM.
 
 ## Checklist de clôture
 

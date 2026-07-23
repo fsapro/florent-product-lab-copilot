@@ -123,6 +123,9 @@ comme ressources textuelles accessibles et non comme prompt files executes nativ
   Ne jamais utiliser `git add -A` (ou equivalent) sans cette revue prealable : un
   repository embarque, un fichier de registre modifie par une autre session, ou tout
   artefact inattendu doit etre signale au PM avant d'etre inclus dans un commit.
+- Pour les branches, commits, push, Pull Requests, corrections et fusions, appliquer
+  la regle de gestion autonome de Git et des Pull Requests du
+  `.github/copilot-instructions.md` du repository concerne.
 - En mode `ADOPT`, ne jamais remettre en question le travail deja realise dans le
   repository cible, ne jamais ecraser un fichier existant sans confirmation explicite,
   et ne jamais creer d'issue retroactive pour du travail deja fait.

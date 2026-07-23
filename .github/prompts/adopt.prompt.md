@@ -59,6 +59,7 @@ Si le code existe déjà en local mais qu'aucun repository GitHub cible n'existe
 - Ne jamais pousser directement sur la branche par défaut d'un repository ayant des collaborateurs ou une protection de branche sans confirmation explicite du PM.
 - Ne jamais relancer ADOPT sur un projet déjà marqué `origin: adopted` sans avertir le PM.
 - Avant tout commit, inspecter explicitement `git status` / `git diff --stat` et ne stager que les fichiers de gouvernance ajoutés par ADOPT. Ne jamais utiliser `git add -A` sans cette revue — le repository cible peut déjà contenir des changements non liés (autre session, autre projet) qui ne doivent jamais se retrouver inclus silencieusement.
+- Appliquer la gestion Git/PR autonome définie dans `.github/copilot-instructions.md` du repository cible : Copilot prépare, publie et fusionne si le périmètre est respecté, les contrôles passent et aucun arbitrage produit n'est requis.
 
 ## Pièges connus
 
