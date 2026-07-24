@@ -86,6 +86,18 @@ jamais développés sur mesure si une solution standard, reconnue et adaptée ex
 - Niveau 2, selon risque ou périmètre : intégration, contrats, accessibilité, sécurité ciblée, migration ou non-régression des flux impactés.
 - Niveau 3, avant release ou changement structurant : suite complète, E2E, sécurité élargie, performance, résilience, revue architecture/conformité globale.
 
+Pendant le développement itératif, ne pas relancer mécaniquement toute la suite à
+chaque micro-changement. Réexécuter d'abord le plus petit ensemble déterministe qui
+couvre les fichiers, contrats et flux modifiés. Ne répéter un contrôle déjà passé dans
+la même branche que si le code concerné, la configuration, les dépendances, les données
+de test ou la base de branche ont changé, ou si un échec exige une confirmation après
+correction.
+
+Planifier une salve de non-régression aux moments critiques : changement structurant,
+sécurité/authentification, migration, nouvelle dépendance, modification multi-composants,
+préparation de release, clôture de milestone/projet ou propagation multi-repository.
+Cette salve reste proportionnée aux flux réellement exposés au risque.
+
 Utiliser un LLM pour vérifier uniquement lorsqu'un test, linter, type checker, scanner,
 règle statique ou comparaison de schéma ne couvre pas le raisonnement nécessaire.
 

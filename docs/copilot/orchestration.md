@@ -38,6 +38,11 @@ milestones, issues et Project. Les issues créées au bootstrap restent limitée
 Solution Design / préparation ; aucune issue de développement ne devient `Ready` avant
 `Solution Design: Approved`.
 
+Les tests suivent une logique proportionnée : boucle courte ciblée pendant les
+itérations, puis salve de non-régression aux gates de risque (release, milestone,
+changement structurant, sécurité, migration, dépendance majeure ou propagation
+multi-repository).
+
 ## Politique de publication
 
 Par défaut, une demande modifie uniquement le repository source d'autorité concerné.
