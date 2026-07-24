@@ -184,6 +184,11 @@ Appliquer `docs/testing-strategy.md` :
 - Niveau 2 selon le risque ou le périmètre ;
 - Niveau 3 avant release ou changement structurant.
 
+Pendant les itérations de développement, ne pas relancer mécaniquement toute la suite :
+réexécuter le plus petit ensemble déterministe couvrant le changement, puis déclencher
+une salve de non-régression uniquement aux gates de risque définis dans
+`docs/testing-strategy.md`.
+
 Privilégier les contrôles déterministes. Réserver les analyses LLM aux raisonnements
 qui ne peuvent pas être couverts par test, linter, type checker, scanner, règle statique
 ou comparaison de schéma.

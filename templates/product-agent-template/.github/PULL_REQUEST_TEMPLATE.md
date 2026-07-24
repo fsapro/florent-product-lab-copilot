@@ -23,6 +23,10 @@ Closes #
 
 ## Vérifications
 
+- Niveau retenu : 1 / 2 / 3
+- Contrôles relancés parce que le périmètre a changé : ...
+- Contrôles non relancés car déjà couverts dans cette branche : ...
+
 - [ ] Formatage
 - [ ] Lint
 - [ ] Type check
