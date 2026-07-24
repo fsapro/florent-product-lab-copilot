@@ -165,6 +165,7 @@ templates/
 - Aucun développement fonctionnel ne démarre avant `Solution Design: Approved`.
 - Une seule issue principale peut être en cours d'implémentation.
 - L'état est repris depuis GitHub et `projects.yaml`, jamais depuis la mémoire du chat seule.
+- Une évolution du framework modifie par défaut uniquement le repository source d'autorité ; la propagation vers d'autres repositories doit être demandée explicitement.
 - Copilot gère Git et les Pull Requests de manière autonome ; le PM valide le produit, pas le code ni les diffs.
 
 ## Créer ou reprendre un projet

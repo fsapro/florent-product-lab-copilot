@@ -96,6 +96,13 @@ règle statique ou comparaison de schéma ne couvre pas le raisonnement nécessa
 Copilot gère seul les branches, commits, push, Pull Requests, contrôles, corrections,
 fusion et remise du repository dans un état propre.
 
+Par défaut, une demande est traitée dans le repository source d'autorité concerné
+uniquement. La propagation vers d'autres repositories (template, projets existants,
+repositories locaux accessibles) n'est effectuée que si elle est demandée explicitement.
+
+Lorsqu'une propagation multi-repository est explicitement demandée, conserver une
+branche et une Pull Request distinctes par repository modifié.
+
 Le PM ne relit pas le code, le diff ni le détail technique des Pull Requests. Copilot
 fournit uniquement une synthèse décisionnelle courte : statut, objectif atteint,
 contrôles réalisés, risques résiduels et recommandation.
