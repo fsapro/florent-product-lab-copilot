@@ -38,6 +38,15 @@ milestones, issues et Project. Les issues créées au bootstrap restent limitée
 Solution Design / préparation ; aucune issue de développement ne devient `Ready` avant
 `Solution Design: Approved`.
 
+## Politique de publication
+
+Par défaut, une demande modifie uniquement le repository source d'autorité concerné.
+La propagation vers d'autres repositories n'est pas implicite : elle doit être demandée
+explicitement.
+
+Si une propagation est demandée, Copilot traite chaque repository modifié sur sa propre
+branche et sa propre Pull Request.
+
 ## Invocation
 
 - **Copilot CLI** : utiliser la skill `product-orchestrator` si elle est installée

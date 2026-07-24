@@ -121,6 +121,9 @@ comme ressources textuelles accessibles et non comme prompt files executes nativ
   et jamais sans que le workspace courant soit le repository meta.
 - Ne jamais demarrer de developpement fonctionnel dans un repository projet tant que
   `docs/solution-design/solution-design.md` n'est pas au statut `Approved`.
+- Pour une evolution du framework, modifier par defaut uniquement le repository source
+  d'autorite concerne. Ne propager au template ou aux projets existants que si cette
+  propagation est demandee explicitement.
 - Avant tout commit, quel que soit le mode, inspecter explicitement `git status` /
   `git diff --stat` et ne stager que les fichiers attendus pour la tache en cours.
   Ne jamais utiliser `git add -A` (ou equivalent) sans cette revue prealable : un

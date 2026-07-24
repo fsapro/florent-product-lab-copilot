@@ -31,6 +31,13 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 Copilot gère seul les branches, commits, push, Pull Requests, contrôles, corrections,
 fusion et remise du repository dans un état propre.
 
+Par défaut, le travail porte uniquement sur ce repository projet. Aucune propagation
+automatique vers le repository central, le template source ou d'autres repositories
+projets n'est supposée sans demande explicite.
+
+Si une propagation inter-repositories est demandée explicitement, conserver une branche
+et une Pull Request distinctes par repository modifié.
+
 Le PM ne relit pas le code, le diff ni le détail technique des Pull Requests. Copilot
 fournit uniquement une synthèse décisionnelle courte : statut, objectif atteint,
 contrôles réalisés, risques résiduels et recommandation.
