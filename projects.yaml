@@ -19,10 +19,12 @@ projects:
     status: active
     origin: adopted
     adopted_at: 2026-07-25
+    github_project: 5
     phases:
-      - id: phase-0
-        name: "Adoption"
-        milestone: 0
+      - id: phase-1
+        name: "Socle et modele de domaine"
+        milestone: 1
+        status: in_progress
 
   mcp-product-opportunity:
     name: mcp-product-opportunity
