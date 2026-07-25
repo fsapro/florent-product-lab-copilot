@@ -24,31 +24,35 @@ Principe directeur : le repository cible peut être dans **n'importe quel état*
    - Vérifier la protection de branche par défaut (`gh api repos/<repo>/branches/<default>/protection` — tolérer une erreur 403/404, cela signifie simplement que l'information n'est pas accessible ou qu'il n'y a pas de protection).
    - Vérifier la présence de CI existante (`.github/workflows/`).
    - Déterminer si le repository existe déjà sur GitHub ou seulement en local (code non encore poussé) — voir sous-cas ci-dessous.
-2. **Ne jamais remettre en question l'existant.** Le travail déjà fait est traité comme une baseline validée. Ne pas proposer de refonte, ne pas challenger les choix passés — seulement identifier ce qui manque pour l'inscrire dans le framework.
-3. **Détection de conflit de gouvernance.** Si `.github/copilot-instructions.md` existe déjà et diverge du template (`templates/product-agent-template/.github/copilot-instructions.md`), présenter le diff au PM et demander une décision explicite : garder l'existant / remplacer par le template / fusionner. Ne jamais écraser silencieusement.
-4. **Scaffold idempotent.** Copier uniquement les fichiers du template absents du repository cible (`README.md`, `.github/copilot-instructions.md` si absent, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/prompts/` locaux, `.github/skills/`, `.github/mcp.context7.example.json`, `docs/solution-design/`, `docs/architecture/`, `docs/implementation-plan.md`, `docs/design-validation.md`, `docs/context7.md`, `docs/testing-strategy.md`, `docs/engineering-principles.md`, `docs/decisions/`, `docs/learnings/`, `docs/independent-verification.md`, `docs/learning-lifecycle.md`). Ne jamais écraser un fichier déjà présent (code, README métier, docs existants) sans confirmation explicite du PM.
-5. **Reconstitution minimale du plan produit.** Générer `docs/product/plan.md` à partir de l'existant (README, issues fermées/ouvertes, milestones, docs déjà présents). Marquer explicitement chaque section reconstituée (`Reconstitué depuis l'existant — à confirmer`) par opposition aux sections confirmées par le PM. Ne demander au PM que de combler les trous, jamais de revalider l'ensemble.
-6. **Registre `projects.yaml`.** Ajouter ou compléter l'entrée du projet :
+   - Identifier le GitHub Project existant rattaché au repository, s'il existe.
+2. **Vérifier les scopes GitHub CLI.** Exécuter `gh auth status` et confirmer la présence des scopes `repo`, `project`, `read:project`. Si absents, exécuter `gh auth refresh -s project,read:project` avant de poursuivre — éviter une interruption en cours de séquence.
+3. **Ne jamais remettre en question l'existant.** Le travail déjà fait est traité comme une baseline validée. Ne pas proposer de refonte, ne pas challenger les choix passés — seulement identifier ce qui manque pour l'inscrire dans le framework.
+4. **Détection de conflit de gouvernance.** Si `.github/copilot-instructions.md` existe déjà et diverge du template (`templates/product-agent-template/.github/copilot-instructions.md`), présenter le diff au PM et demander une décision explicite : garder l'existant / remplacer par le template / fusionner. Ne jamais écraser silencieusement.
+5. **Scaffold idempotent.** Copier uniquement les fichiers du template absents du repository cible (`README.md`, `.github/copilot-instructions.md` si absent, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/prompts/` locaux, `.github/skills/`, `.github/mcp.context7.example.json`, `docs/solution-design/`, `docs/architecture/`, `docs/implementation-plan.md`, `docs/design-validation.md`, `docs/context7.md`, `docs/testing-strategy.md`, `docs/engineering-principles.md`, `docs/decisions/`, `docs/learnings/`, `docs/independent-verification.md`, `docs/learning-lifecycle.md`). Ne jamais écraser un fichier déjà présent (code, README métier, docs existants) sans confirmation explicite du PM.
+6. **Reconstitution minimale du plan produit.** Générer `docs/product/plan.md` à partir de l'existant (README, issues fermées/ouvertes, milestones, docs déjà présents). Marquer explicitement chaque section reconstituée (`Reconstitué depuis l'existant — à confirmer`) par opposition aux sections confirmées par le PM. Ne demander au PM que de combler les trous, jamais de revalider l'ensemble.
+7. **Registre `projects.yaml`.** Ajouter ou compléter l'entrée du projet :
    - `status: active`
    - `origin: adopted`
    - `adopted_at: <date du jour>`
    - `phases:` inférées des milestones/issues déjà existants si présents, sinon une phase unique `phase-0` nommée "Adoption" — à faire évoluer via `REPLAN` dès que le PM précise la suite.
    - Avant d'écrire, vérifier qu'une entrée avec `origin: adopted` n'existe pas déjà pour ce projet (garde-fou anti double-exécution) : si c'est le cas, avertir le PM plutôt que de relancer la séquence.
-7. **Aucune création d'issue rétroactive.** Ne pas créer d'issues pour du travail déjà fait. N'en créer que pour Solution Design/préparation ou pour la suite du travail après validation PM. Aucune issue de développement ne devient `Ready` sans Solution Design `Approved`.
-8. **Aucune opération git destructive.** Jamais de `push --force`, jamais de réécriture d'historique (`rebase -i` sur des commits déjà partagés), jamais de suppression de branche existante.
-9. **Livraison via PR par défaut.** Pousser la gouvernance ajoutée sur une branche dédiée (ex. `chore/adopt-framework-governance`) et ouvrir une PR avec `.github/PULL_REQUEST_TEMPLATE.md` du scaffold — sauf si le PM confirme explicitement que le repository est mono-contributeur sans protection de branche, auquel cas un commit direct sur la branche par défaut est acceptable. Ne jamais assumer cette confirmation : la poser comme question si l'information n'est pas déterminable via `gh api`.
-10. **Vérification finale.** Appliquer les mêmes garde-fous que BOOTSTRAP :
+8. **Création des milestones manquants.** À partir des phases reconstituées dans le plan produit (étape 6) et des milestones déjà existants (découverts en étape 1), créer uniquement les milestones absents. Ne jamais renommer, supprimer ou réorganiser un milestone existant — cela relève de `REPLAN`. Si aucun milestone n'existe et que les phases ne sont pas encore confirmées par le PM, créer un unique milestone "Adoption" correspondant à la phase-0 du registre.
+9. **Création des issues prospectives (premier milestone non couvert uniquement).** Ne pas créer d'issues pour du travail déjà fait. Créer uniquement les issues de Solution Design et de préparation pour le prochain milestone à livrer (le premier milestone sans issues existantes, ou le milestone courant si des issues existent mais que Solution Design manque). Aucune issue de développement ne devient `Ready` sans Solution Design `Approved`. Si le prochain travail n'est pas encore clair, créer une unique issue "Définir le Solution Design" rattachée au milestone courant.
+10. **Création ou rattachement au GitHub Project.** Si un GitHub Project existe déjà pour ce repository (découvert en étape 1), y rattacher les issues créées. Sinon, créer un GitHub Project (nommé d'après le projet), y rattacher toutes les issues ouvertes pertinentes (existantes et nouvellement créées). Confirmer le nom du Project au PM avant création si le choix n'est pas évident.
+11. **Aucune opération git destructive.** Jamais de `push --force`, jamais de réécriture d'historique (`rebase -i` sur des commits déjà partagés), jamais de suppression de branche existante.
+12. **Livraison via PR par défaut.** Pousser la gouvernance ajoutée sur une branche dédiée (ex. `chore/adopt-framework-governance`) et ouvrir une PR avec `.github/PULL_REQUEST_TEMPLATE.md` du scaffold — sauf si le PM confirme explicitement que le repository est mono-contributeur sans protection de branche, auquel cas un commit direct sur la branche par défaut est acceptable. Ne jamais assumer cette confirmation : la poser comme question si l'information n'est pas déterminable via `gh api`.
+13. **Vérification finale.** Appliquer les mêmes garde-fous que BOOTSTRAP :
     - le contenu ajouté est réellement présent dans le repository (lecture API, pas seulement supposé poussé) ;
     - le scaffold est complet (comparer la liste des fichiers ajoutés à la liste attendue) ;
     - `.github/copilot-instructions.md` contient les règles non-négociables **inline**, jamais un renvoi indirect.
-11. **Confirmation au PM.** Restituer : lien du repository, liste des fichiers ajoutés, entrée `projects.yaml` créée/complétée, lien de la PR (ou du commit si push direct confirmé), état reconstitué du plan produit à valider section par section.
+14. **Confirmation au PM.** Restituer : lien du repository, liste des fichiers ajoutés, entrée `projects.yaml` créée/complétée, lien de la PR (ou du commit si push direct confirmé), milestones créés/existants, GitHub Project (lien), issues prospectives créées, état reconstitué du plan produit à valider section par section.
 
 ### Sous-cas — repository local non encore créé sur GitHub
 
 Si le code existe déjà en local mais qu'aucun repository GitHub cible n'existe :
 1. Confirmer avec le PM le nom et la visibilité du futur repository avant `gh repo create`.
 2. Créer le repository GitHub à partir du contenu local existant (pousser l'historique local tel quel, ne jamais réinitialiser l'historique).
-3. Poursuivre ensuite la séquence ADOPT normalement (étapes 3 à 11) une fois le repository distant en place.
+3. Poursuivre ensuite la séquence ADOPT normalement (étapes 4 à 14) une fois le repository distant en place.
 
 ## Contraintes
 
@@ -70,4 +74,4 @@ Si le code existe déjà en local mais qu'aucun repository GitHub cible n'existe
 
 ## Output attendu
 
-Registre `projects.yaml` mis à jour (`origin: adopted`), gouvernance minimale présente dans le repository cible (complétée, jamais écrasée), plan produit reconstitué a minima et soumis à confirmation du PM, PR ouverte (ou commit direct si confirmé) contenant les ajouts, état restitué au PM avec liens directs.
+Registre `projects.yaml` mis à jour (`origin: adopted`), gouvernance minimale présente dans le repository cible (complétée, jamais écrasée), plan produit reconstitué a minima et soumis à confirmation du PM, milestones créés ou confirmés, GitHub Project créé ou rattaché avec issues liées, issues prospectives (Solution Design/préparation) créées pour le prochain milestone, PR ouverte (ou commit direct si confirmé) contenant les ajouts, état restitué au PM avec liens directs.
