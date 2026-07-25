@@ -12,6 +12,18 @@ defaults:
   max_active_implementation_items: 1
 
 projects:
+  taas:
+    name: taas
+    description: "Framework ouvert de détection, jugement et action traçables"
+    repository: fsapro/taas
+    status: active
+    origin: adopted
+    adopted_at: 2026-07-25
+    phases:
+      - id: phase-0
+        name: "Adoption"
+        milestone: 0
+
   mcp-product-opportunity:
     name: mcp-product-opportunity
     description: "Repository de test MCP end-to-end pour VS Code et Copilot Agent"
