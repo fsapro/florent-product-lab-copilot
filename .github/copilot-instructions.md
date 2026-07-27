@@ -128,6 +128,60 @@ produit n'est requis, Copilot peut fusionner la Pull Request.
 
 ---
 
+## Écosystème GitHub Copilot
+
+Cette gouvernance s'exécute dans l'écosystème GitHub Copilot. Le critère est la
+surface de contrôle, pas le fournisseur du modèle : un modèle Anthropic est acceptable
+s'il est sélectionné et exécuté par GitHub Copilot.
+
+Surfaces approuvées pour l'orchestration, la vérification indépendante et les décisions
+Git/GitHub routinières :
+
+- VS Code Copilot Chat ;
+- Copilot CLI avec les skills installées et les prompts lus comme ressources textuelles ;
+- GitHub.com pour les repositories, issues, Projects, pull requests, checks et traces.
+
+Claude CLI, Claude Code, appels Anthropic directs, ChatGPT ou autres outils LLM externes
+ne produisent pas de verdict opposable pour ce framework. Un verdict issu d'une surface
+externe est rejeté et doit être refait par une session GitHub Copilot indépendante.
+
+Les outils documentaires externes sont admis uniquement pour consulter de la documentation
+technique actuelle. Ils ne remplacent jamais un arbitrage, une vérification indépendante
+ou une décision de gouvernance Copilot.
+
+---
+
+## Délégation opérationnelle GitHub
+
+Le PM délègue les opérations Git et GitHub routinières à Copilot. Copilot ne demande pas
+de validation PM pour une action déterministe déjà couverte par un plan, un Solution
+Design, des critères d'acceptation et des contrôles applicables.
+
+Copilot peut exécuter sans confirmation PM supplémentaire :
+
+- créer, mettre à jour, rattacher ou fermer des issues déterminées par un plan approuvé ;
+- passer de l'issue courante à la prochaine issue `Ready` lorsque le Solution Design est
+  `Approved`, qu'aucune issue principale n'est déjà en cours et qu'aucun arbitrage n'est ouvert ;
+- créer une branche, pousser des commits, ouvrir une Pull Request, relancer les contrôles
+  et corriger les défauts dans le périmètre approuvé ;
+- fusionner une Pull Request lorsque le périmètre est respecté, les contrôles requis passent,
+  la vérification indépendante Copilot est enregistrée si requise et aucune réserve produit
+  n'est ouverte ;
+- fermer l'issue liée, mettre à jour le Project ou le milestone, nettoyer la branche et
+  passer au prochain travail éligible.
+
+Copilot sollicite le PM uniquement si une action implique :
+
+- validation ou modification d'un plan produit ;
+- changement de périmètre, nouveau besoin, retrait significatif ou arbitrage de priorité ;
+- Solution Design non approuvé, invalidé ou à modifier ;
+- sécurité, permissions, confidentialité, production ou migration destructive ;
+- nouveau service payant, nouvelle dépendance structurante ou décision difficile à inverser ;
+- conflit de gouvernance, conflit de fichiers existants ou ambiguïté que GitHub ne permet pas
+  de trancher objectivement.
+
+---
+
 ## Sources de vérité
 
 | Source | Localisation |
@@ -140,6 +194,7 @@ produit n'est requis, Copilot peut fusionner la Pull Request.
 | Décisions | ADR et PDR |
 | Registre multi-projets | `projects.yaml` |
 | Règles globales actives | `memory/global-learnings.yaml` |
+| Politique de modèles et outils | `docs/copilot/tooling-policy.md` |
 
 ---
 

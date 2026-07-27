@@ -24,11 +24,29 @@ le système ; elle ne remplace pas les procédures opérationnelles.
 
 ## Surfaces Copilot supportées
 
+La gouvernance reste dans l'écosystème GitHub Copilot. Le choix d'un modèle Anthropic
+est acceptable lorsqu'il est fait dans Copilot ; Claude CLI, Claude Code ou tout autre
+assistant LLM externe ne peut pas produire une vérification indépendante ou une décision
+de merge opposable. Voir [`docs/copilot/tooling-policy.md`](docs/copilot/tooling-policy.md).
+
 | Surface | Usage attendu |
 |---|---|
 | Copilot CLI | Surface principale : utiliser la skill `product-orchestrator` installée au niveau utilisateur. La skill route et lit les prompts comme ressources textuelles. |
 | VS Code Copilot Chat | Surface secondaire : utiliser les prompt files `.github/prompts/*.prompt.md` comme entrées natives lorsque VS Code les prend en charge. |
 | GitHub.com | Utilisé pour les repositories, issues, Projects, pull requests et CI ; les prompt files ne sont pas la surface principale d'exécution. |
+
+## Autonomie opérationnelle
+
+Le PM délègue à Copilot les événements Git et GitHub routiniers : créer ou fermer une
+issue déterministe, passer à l'issue `Ready` suivante, ouvrir une PR, fusionner une PR
+éligible, nettoyer une branche, mettre à jour un Project ou un milestone.
+
+Copilot sollicite le PM uniquement pour les décisions produit : validation de plan,
+changement de périmètre, Solution Design, risque significatif, coût/service payant,
+sécurité/confidentialité, migration destructive ou décision difficile à inverser.
+
+Les critères détaillés vivent dans [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
+et dans les prompts de mode.
 
 ## Installation de la skill utilisateur
 
@@ -88,7 +106,9 @@ Vue synthétique de l'orchestration : [`docs/copilot/orchestration.md`](docs/cop
 |---|---|
 | `.github/copilot-instructions.md` | Règles permanentes chargées par Copilot : rôles, garde-fous, gestion Git/PR, protection du périmètre, fin de tâche. |
 | `setup/user-skills/product-orchestrator/SKILL.md` | Skill utilisateur cross-repo : détection du contexte, routage entre modes et garde-fous. |
+| `.github/agents/orchestrator-automation.agent.md` | Agent dédié aux décisions GitHub routinières : merge, fermeture d'issue, passage à l'issue suivante, Project/milestone, nettoyage de branche. |
 | `.github/prompts/*.prompt.md` | Détail opérationnel des procédures du repository central. |
+| `docs/copilot/tooling-policy.md` | Politique des surfaces et modèles autorisés pour la gouvernance Copilot. |
 | `templates/product-agent-template/` | Template complet injecté dans les nouveaux repositories projets. |
 | `templates/product-agent-template/.github/skills/project-orchestrator/SKILL.md` | Skill locale des projets enfants : reprise, statut, replanification et clôture. |
 | `templates/product-agent-template/.github/skills/solution-design/SKILL.md` | Skill locale de production du Solution Design. |
@@ -101,6 +121,7 @@ Vue synthétique de l'orchestration : [`docs/copilot/orchestration.md`](docs/cop
 ```text
 .github/
 ├── copilot-instructions.md
+├── agents/
 └── prompts/
     ├── discover.prompt.md
     ├── bootstrap.prompt.md
@@ -115,6 +136,7 @@ docs/
     ├── orchestration.md
     ├── independent-verification.md
     ├── learning-lifecycle.md
+    ├── tooling-policy.md
     └── audit-2026-07-23.md
 
 memory/
@@ -130,6 +152,7 @@ setup/
 templates/
 └── product-agent-template/
     ├── .github/copilot-instructions.md
+    ├── .github/agents/
     ├── .github/prompts/
     ├── .github/skills/project-orchestrator/SKILL.md
     ├── .github/skills/solution-design/SKILL.md
@@ -141,6 +164,7 @@ templates/
     ├── docs/decisions/
     ├── docs/learnings/
     ├── docs/independent-verification.md
+    ├── docs/tooling-policy.md
     └── docs/learning-lifecycle.md
 ```
 
@@ -156,6 +180,7 @@ templates/
 | Apprentissages locaux | `docs/learnings/learning-log.yaml` du repository projet |
 | Registre multi-projets | `projects.yaml` |
 | Règles globales | `memory/global-learnings.yaml` |
+| Politique de modèles et outils | `docs/copilot/tooling-policy.md` dans le repository méta ; `docs/tooling-policy.md` dans un repository projet |
 
 ## Garde-fous essentiels
 

@@ -19,8 +19,8 @@ Principe directeur : le repository ne doit jamais être laissé vide pendant que
 1. Vérifier que le plan est approuvé explicitement (ne pas assumer).
 2. Vérifier les scopes `gh auth status` (`repo`, `project`, `read:project`). Si absents, exécuter `gh auth refresh -s project,read:project` maintenant plutôt qu'en cours de séquence.
 3. Lire `projects.yaml` pour vérifier si le projet existe déjà ; l'ajouter ou le mettre à jour sinon.
-4. Créer le repository GitHub si nécessaire (demander confirmation avant).
-5. **Scaffold immédiat** : copier `templates/product-agent-template/` (README, `.github/copilot-instructions.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/skills/`, `.github/prompts/`, `.github/mcp.context7.example.json`, `docs/product/plan.md` adapté au plan réel, `docs/solution-design/`, `docs/architecture/`, `docs/implementation-plan.md`, `docs/design-validation.md`, `docs/context7.md`, `docs/testing-strategy.md`, `docs/engineering-principles.md`, `docs/decisions/`, `docs/learnings/`, `docs/independent-verification.md`, `docs/learning-lifecycle.md`) et pousser ce contenu en commit initial — avant toute création d'issue ou de milestone.
+4. Créer le repository GitHub si nécessaire. Ne demander confirmation que si le nom, la visibilité, l'organisation ou le périmètre du repository ne sont pas déterminés par le plan approuvé.
+5. **Scaffold immédiat** : copier `templates/product-agent-template/` (README, `.github/copilot-instructions.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/agents/`, `.github/skills/`, `.github/prompts/`, `.github/mcp.context7.example.json`, `docs/product/plan.md` adapté au plan réel, `docs/solution-design/`, `docs/architecture/`, `docs/implementation-plan.md`, `docs/design-validation.md`, `docs/context7.md`, `docs/testing-strategy.md`, `docs/engineering-principles.md`, `docs/decisions/`, `docs/learnings/`, `docs/independent-verification.md`, `docs/tooling-policy.md`, `docs/learning-lifecycle.md`) et pousser ce contenu en commit initial — avant toute création d'issue ou de milestone.
 6. **Vérifier** que le repository contient effectivement ce contenu (lecture API ou `git ls-remote` / `gh api repos/<repo>/contents`) avant de continuer. Ne jamais déclarer le bootstrap terminé sans cette vérification explicite.
 7. **Vérifier la complétude** : comparer la liste des fichiers du template à ceux effectivement copiés. Compléter tout fichier manquant avant de continuer.
 8. **Vérifier l'absence d'indirection** : `.github/copilot-instructions.md` du nouveau repository doit contenir directement (inline) les règles non-négociables (rôles, règles fondamentales, protection du périmètre, fin de tâche) — pas un renvoi vers un autre fichier. C'est le seul fichier nativement chargé par GitHub Copilot.
@@ -32,7 +32,8 @@ Principe directeur : le repository ne doit jamais être laissé vide pendant que
 ## Contraintes
 
 - Ne pas bootstrapper sans validation explicite du plan.
-- Confirmer chaque ressource GitHub majeure avant création.
+- Ne pas demander de validation PM ressource par ressource lorsque le plan est approuvé et que les repositories, milestones, issues et Project sont déterministes.
+- Demander une décision PM uniquement en cas d'ambiguïté, conflit avec une ressource existante, nouveau coût/service, changement de périmètre ou décision difficile à inverser.
 - Ne créer que les issues du premier milestone, pas toutes les phases.
 - Les issues créées au bootstrap préparent le Solution Design et le delivery ; elles ne déclenchent pas de développement tant que le Solution Design n'est pas `Approved`.
 - Ne jamais annoncer un bootstrap "terminé" sans avoir vérifié que le repository contient du contenu réel (pas seulement des métadonnées GitHub).

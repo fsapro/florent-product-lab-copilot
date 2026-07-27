@@ -11,7 +11,9 @@ Fournir a chaque projet :
 - un jalon Solution Design obligatoire avant developpement ;
 - une structure documentaire minimale ;
 - une tracabilite GitHub ;
-- des regles communes d'execution et de validation.
+- des regles communes d'execution et de validation ;
+- une politique de surfaces Copilot-only pour la gouvernance ;
+- un agent d'automation pour les operations GitHub routinieres.
 
 ## Sources de verite
 
@@ -21,6 +23,18 @@ Fournir a chaque projet :
 - Travail : GitHub Issues et GitHub Project
 - Implementation et preuves : pull requests et CI
 - Decisions structurantes : docs/decisions/
+- Verification independante : docs/independent-verification.md
+- Politique de modeles et outils : docs/tooling-policy.md
+
+## Autonomie operationnelle
+
+Le PM delegue a Copilot les operations Git et GitHub routinieres : passer a l'issue
+`Ready` suivante, ouvrir ou fusionner une PR eligible, fermer une issue couverte,
+mettre a jour un Project/milestone et nettoyer une branche.
+
+L'agent `.github/agents/orchestrator-automation.agent.md` tranche ces decisions lorsque
+les criteres sont objectifs. Le PM reste sollicite uniquement pour les arbitrages produit,
+changements de perimetre, risques significatifs et decisions difficiles a inverser.
 
 ## Principe
 

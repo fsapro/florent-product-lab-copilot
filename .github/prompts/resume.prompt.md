@@ -16,9 +16,11 @@ Projet : [nom du projet]
 4. Récupérer les issues ouvertes et le GitHub Project.
 5. Identifier l'unique issue `In progress` ou la prochaine issue `Ready`.
 6. Récupérer les pull requests ouvertes et leur état CI.
-7. Restituer un résumé d'état complet au PM avant toute action.
+7. Restituer un résumé d'état complet au PM avant toute action observable.
 8. Si le Solution Design n'est pas `Approved`, rester en préparation/design et ne pas implémenter.
-9. Attendre validation du PM avant d'implémenter.
+9. Si le Solution Design est `Approved`, qu'aucune issue principale n'est déjà en cours, qu'une issue `Ready` a des critères clairs et qu'aucun arbitrage produit n'est ouvert, démarrer l'implémentation sans demander au PM de valider le passage à l'issue suivante.
+10. Demander une décision PM uniquement si le périmètre, la priorité, les critères, le statut GitHub ou le risque ne permettent pas de choisir objectivement la prochaine action.
+11. En cas d'hésitation opérationnelle sur `merge_pr`, `close_issue`, `start_next_issue`, `update_project` ou `cleanup_branch`, déléguer la décision à l'agent `.github/agents/orchestrator-automation.agent.md` et suivre son verdict (`proceed`, `proceed_with_log`, `ask_pm`, `blocked`).
 
 ## Résumé d'état à fournir
 
@@ -31,6 +33,7 @@ Projet : [nom du projet]
 
 ## Contraintes
 
-- Ne jamais démarrer l'implémentation sans restituer l'état et attendre confirmation.
+- Ne jamais démarrer l'implémentation sans restituer l'état.
 - Ne jamais démarrer l'implémentation sans Solution Design `Approved`.
+- Ne pas demander au PM de valider une transition d'issue ou une reprise lorsque les critères d'auto-progression sont satisfaits.
 - L'état provient de GitHub, pas de la mémoire du chat.

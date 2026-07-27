@@ -78,8 +78,27 @@ accessibles, mais ne les execute pas nativement comme commandes de prompt.
      (`.github/prompts/<mode>.prompt.md`) s'il existe, ou l'equivalent du
      repository meta si on y travaille, comme procedure textuelle.
 5. **Si aucun mode n'est donne** : deduire le mode le plus probable a partir de
-   l'etat detecte (voir arbre de decision ci-dessous), puis le proposer avant de
-   l'executer — ne jamais executer un mode devine sans confirmation explicite.
+  l'etat detecte (voir arbre de decision ci-dessous). L'executer sans confirmation PM
+  si l'etat GitHub le rend objectif et qu'aucun arbitrage produit n'est ouvert. Demander
+  une decision uniquement si le mode reste ambigu, incoherent ou risqué.
+
+## Autonomie operationnelle GitHub
+
+Cette skill route le travail vers Copilot ; elle ne redemande pas au PM de valider les
+evenements GitHub routiniers lorsque les criteres objectifs sont couverts. Copilot peut
+creer ou fermer une issue deterministe, passer a l'issue `Ready` suivante, ouvrir et
+fusionner une PR eligible, nettoyer une branche, mettre a jour un Project ou un milestone
+si le plan approuve, le Solution Design, les criteres d'acceptation et les controles le
+permettent.
+
+Solliciter le PM uniquement pour un arbitrage produit, un changement de perimetre, une
+ambiguite non resolue par GitHub, un risque significatif, une decision difficile a
+inverser, un conflit de gouvernance, une operation destructive ou un nouveau cout/service.
+
+La verification independante et les decisions de gouvernance doivent rester dans les
+surfaces GitHub Copilot approuvees. Un verdict Claude CLI, Claude Code, Anthropic API
+direct ou autre LLM externe n'est pas valide et doit etre refait par une session GitHub
+Copilot independante.
 
 ## Arbre de decision (etat -> mode probable)
 

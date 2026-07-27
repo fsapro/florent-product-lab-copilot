@@ -33,12 +33,34 @@ Ne jamais choisir un mode par supposition. Avant de router :
 
 1. **Si le mode est explicitement donne** (RESUME/STATUS/REPLAN/CLOSE) : verifier sa
    coherence avec l'etat detecte a l'etape 0 avant de continuer (voir tableau ci-dessous).
-   Si incoherent, le signaler et demander confirmation avant de continuer.
+  Si incoherent, le signaler et demander une decision PM avant de continuer.
 2. **Si aucun mode n'est donne** : deduire le mode le plus probable a partir de l'etat
-   detecte (issues ouvertes, PRs en cours, ecart plan/realite), puis le proposer avant
-   de l'executer — ne jamais executer un mode devine sans confirmation.
+  detecte (issues ouvertes, PRs en cours, ecart plan/realite). L'executer sans confirmation
+  PM si l'etat GitHub le rend objectif et qu'aucun arbitrage produit n'est ouvert. Demander
+  une decision uniquement si le mode reste ambigu, incoherent ou risque.
 3. Traiter le mode retenu en consultant `.github/prompts/<mode>.prompt.md` comme
    procedure textuelle en Copilot CLI, ou comme prompt file natif dans VS Code.
+
+## Autonomie operationnelle GitHub
+
+Cette skill route le travail local ; elle ne redemande pas au PM de valider les evenements
+GitHub routiniers lorsque les criteres objectifs sont couverts. Copilot peut fermer une
+issue deterministe, passer a l'issue `Ready` suivante, ouvrir et fusionner une PR eligible,
+nettoyer une branche, mettre a jour un Project ou un milestone si le plan approuve, le
+Solution Design, les criteres d'acceptation et les controles le permettent.
+
+En cas d'hesitation operationnelle sur `merge_pr`, `close_issue`, `start_next_issue`,
+`update_project` ou `cleanup_branch`, deleguer la decision a
+`.github/agents/orchestrator-automation.agent.md` et suivre son verdict.
+
+Solliciter le PM uniquement pour un arbitrage produit, un changement de perimetre, une
+ambiguite non resolue par GitHub, un risque significatif, une decision difficile a
+inverser, un conflit de gouvernance, une operation destructive ou un nouveau cout/service.
+
+La verification independante et les decisions de gouvernance doivent rester dans les
+surfaces GitHub Copilot approuvees. Un verdict Claude CLI, Claude Code, Anthropic API
+direct ou autre LLM externe n'est pas valide et doit etre refait par une session GitHub
+Copilot independante.
 
 ## Arbre de decision (etat -> mode probable)
 
@@ -62,6 +84,7 @@ Ne jamais choisir un mode par supposition. Avant de router :
 - Procedures VS Code natives et ressources textuelles pour Copilot CLI : [.github/prompts/resume.prompt.md](../../prompts/resume.prompt.md), [status.prompt.md](../../prompts/status.prompt.md), [replan.prompt.md](../../prompts/replan.prompt.md), [close.prompt.md](../../prompts/close.prompt.md)
 - Contrat de gouvernance : [.github/copilot-instructions.md](../../copilot-instructions.md)
 - Vérification indépendante : [docs/independent-verification.md](../../../docs/independent-verification.md)
+- Politique de modèles et outils : [docs/tooling-policy.md](../../../docs/tooling-policy.md)
 
 ## Autonomie Copilot CLI
 

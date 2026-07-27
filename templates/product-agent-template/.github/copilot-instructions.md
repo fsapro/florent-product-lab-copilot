@@ -23,6 +23,7 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 - Décisions structurantes : `docs/decisions/`
 - Apprentissages locaux : `docs/learnings/learning-log.yaml` (modèle et cycle de vie : `docs/learning-lifecycle.md`)
 - Niveaux de vérification indépendante : `docs/independent-verification.md`
+- Politique de modèles et outils : `docs/tooling-policy.md`
 
 ---
 
@@ -48,6 +49,59 @@ significatif ou décision difficile à inverser.
 
 Si le périmètre est respecté, que les contrôles réussissent et qu'aucun arbitrage
 produit n'est requis, Copilot peut fusionner la Pull Request.
+
+---
+
+## Écosystème GitHub Copilot
+
+Cette gouvernance s'exécute dans l'écosystème GitHub Copilot. Le critère est la
+surface de contrôle, pas le fournisseur du modèle : un modèle Anthropic est acceptable
+s'il est sélectionné et exécuté par GitHub Copilot.
+
+Surfaces approuvées pour l'orchestration, la vérification indépendante et les décisions
+Git/GitHub routinières :
+
+- VS Code Copilot Chat ;
+- Copilot CLI avec les skills installées et les prompts lus comme ressources textuelles ;
+- GitHub.com pour les repositories, issues, Projects, pull requests, checks et traces.
+
+Claude CLI, Claude Code, appels Anthropic directs, ChatGPT ou autres outils LLM externes
+ne produisent pas de verdict opposable pour ce framework. Un verdict issu d'une surface
+externe est rejeté et doit être refait par une session GitHub Copilot indépendante.
+
+Les outils documentaires externes sont admis uniquement pour consulter de la documentation
+technique actuelle. Ils ne remplacent jamais un arbitrage, une vérification indépendante
+ou une décision de gouvernance Copilot.
+
+---
+
+## Délégation opérationnelle GitHub
+
+Le PM délègue les opérations Git et GitHub routinières à Copilot. Copilot ne demande pas
+de validation PM pour une action déterministe déjà couverte par un plan, un Solution
+Design, des critères d'acceptation et des contrôles applicables.
+
+Copilot peut exécuter sans confirmation PM supplémentaire :
+
+- passer de l'issue courante à la prochaine issue `Ready` lorsque le Solution Design est
+  `Approved`, qu'aucune issue principale n'est déjà en cours et qu'aucun arbitrage n'est ouvert ;
+- créer une branche, pousser des commits, ouvrir une Pull Request, relancer les contrôles
+  et corriger les défauts dans le périmètre approuvé ;
+- fusionner une Pull Request lorsque le périmètre est respecté, les contrôles requis passent,
+  la vérification indépendante Copilot est enregistrée si requise et aucune réserve produit
+  n'est ouverte ;
+- fermer l'issue liée, mettre à jour le Project ou le milestone, nettoyer la branche et
+  passer au prochain travail éligible.
+
+Copilot sollicite le PM uniquement si une action implique :
+
+- validation ou modification d'un plan produit ;
+- changement de périmètre, nouveau besoin, retrait significatif ou arbitrage de priorité ;
+- Solution Design non approuvé, invalidé ou à modifier ;
+- sécurité, permissions, confidentialité, production ou migration destructive ;
+- nouveau service payant, nouvelle dépendance structurante ou décision difficile à inverser ;
+- conflit de gouvernance, conflit de fichiers existants ou ambiguïté que GitHub ne permet pas
+	de trancher objectivement.
 
 ---
 
@@ -129,6 +183,10 @@ autorisées pour le vérificateur). Résumé :
 - **Niveau 0 (documentation seule)** : pas de vérification requise au-delà d'une relecture.
 - **Niveau 1 (changement local, réversible)** : vérification par une session ou un agent distinct de l'implémenteur, verdict `pass` / `pass_with_reservations` / `fail` consigné dans la PR.
 - **Niveau 2 (changement significatif ou irréversible)** : vérification indépendante obligatoire avant toute validation produit, avec preuves explicites (voir `.github/PULL_REQUEST_TEMPLATE.md`, section "Vérification indépendante").
+
+Pour les niveaux 1 et 2, le vérificateur doit utiliser une surface GitHub Copilot approuvée
+et déclarer cette surface dans la PR. Un verdict Claude CLI, Claude Code ou LLM externe
+est invalide et doit être refait dans Copilot.
 
 ---
 

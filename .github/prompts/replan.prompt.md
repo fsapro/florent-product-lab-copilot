@@ -14,13 +14,18 @@ Projet : [nom du projet]
 2. Identifier l'écart entre l'état actuel et le plan approuvé.
 3. Analyser la cause : hypothèse invalidée, nouveau besoin, contrainte émergente.
 4. Identifier si le Solution Design ou les ADR doivent être créés ou mis à jour.
-5. Proposer des ajustements au plan : périmètre, milestones, critères.
-6. Présenter les options avec leurs compromis.
-7. Attendre la validation explicite du PM avant toute modification.
+5. Classer l'écart :
+   - Type A — opérationnel : correction de libellé, lien, statut, rattachement, milestone manquant ou synchronisation GitHub déterministe sans changement de périmètre.
+   - Type B — clarification produit : critère ambigu, priorité incertaine, découpage d'issue ou ajustement de milestone qui ne change pas le résultat attendu.
+   - Type C — arbitrage produit : changement de périmètre, nouveau besoin, retrait significatif, coût/service, risque, Solution Design invalidé ou décision difficile à inverser.
+6. Pour un Type A, corriger directement et documenter l'action dans la synthèse.
+7. Pour un Type B ou Type C, proposer des ajustements au plan avec options et compromis.
+8. Attendre la validation explicite du PM uniquement pour les Type B et Type C.
 
 ## Contraintes
 
-- Ne pas modifier le plan, les issues ou les milestones sans validation explicite.
+- Ne pas modifier le plan produit, les critères d'acceptation ou le périmètre sans validation explicite.
+- Les corrections opérationnelles Type A sont déléguées à Copilot et ne nécessitent pas de validation PM.
 - Tout ajout de périmètre doit être justifié et délimité.
 - Tout retrait de périmètre doit être documenté comme décision.
 - Tout changement qui invalide le Solution Design approuvé doit repasser par revue indépendante et validation PM.

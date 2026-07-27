@@ -63,3 +63,39 @@ Requis pour :
 Mêmes sources que le Niveau 1, avec en plus reconstruction de l'état depuis les sources de
 vérité du projet (plan approuvé, issues, GitHub Project, PRs, CI) sans dépendre de
 l'historique du chat d'implémentation.
+
+---
+
+## Sélection du niveau
+
+1. Le changement satisfait-il toutes les conditions du Niveau 0 ? → Niveau 0.
+2. Sinon, relève-t-il du Niveau 2 (sécurité, permissions, confidentialité, migration destructive, production, décision difficile à inverser, gate de milestone/release, mécanisme de promotion globale) ? → Niveau 2.
+3. Sinon → Niveau 1.
+
+En cas de doute entre deux niveaux, retenir le niveau le plus élevé.
+
+---
+
+## Identité du vérificateur
+
+Pour les niveaux 1 et 2, le vérificateur doit être une session ou un agent GitHub Copilot
+distinct de l'implémenteur. Le critère est la surface GitHub Copilot utilisée, pas le
+fournisseur du modèle sous-jacent.
+
+Le vérificateur utilise uniquement les surfaces approuvées dans `docs/tooling-policy.md`.
+Claude CLI, Claude Code, appels Anthropic directs, ChatGPT ou autres assistants LLM
+externes ne produisent pas de verdict opposable. Un verdict issu d'une surface externe
+est rejeté et doit être refait par une session GitHub Copilot indépendante.
+
+Le verdict enregistré précise :
+
+- la surface utilisée ;
+- le contexte reçu ;
+- le niveau retenu ;
+- le verdict (`pass`, `pass_with_reservations`, `fail`, `not_verifiable`) ;
+- les preuves consultées ;
+- les réserves et éléments non vérifiés.
+
+Le PM n'est sollicité après vérification indépendante que si le verdict expose un
+arbitrage produit, une réserve significative, un changement de périmètre ou un risque
+hors critères déjà approuvés.
