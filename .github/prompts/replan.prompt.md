@@ -22,6 +22,17 @@ Projet : [nom du projet]
 7. Pour un Type B ou Type C, proposer des ajustements au plan avec options et compromis.
 8. Attendre la validation explicite du PM uniquement pour les Type B et Type C.
 
+### Phase post-validation PM
+
+9. Mettre à jour le PRD / plan produit (nouvelle version).
+10. Mettre à jour le Solution Design si impacté (si Type C → revue indépendante requise avant reprise du dev).
+11. Mettre à jour le plan d'implémentation.
+12. Ajuster les milestones GitHub.
+13. Créer ou ajuster les issues du milestone impacté.
+14. Rattacher les issues au GitHub Project.
+15. Incrémenter la version des documents modifiés (majeure si Type C, mineure si Type B) et ajouter une ligne dans leur table de version.
+16. Confirmer au PM avec liens directs (issues, PR, docs) et résumé du delta appliqué.
+
 ## Contraintes
 
 - Ne pas modifier le plan produit, les critères d'acceptation ou le périmètre sans validation explicite.
@@ -29,6 +40,7 @@ Projet : [nom du projet]
 - Tout ajout de périmètre doit être justifié et délimité.
 - Tout retrait de périmètre doit être documenté comme décision.
 - Tout changement qui invalide le Solution Design approuvé doit repasser par revue indépendante et validation PM.
+- Si le Solution Design passe en version majeure, aucune issue de développement ne peut être `Ready` tant que le nouveau Solution Design n'est pas `Approved`.
 
 ## Output attendu
 

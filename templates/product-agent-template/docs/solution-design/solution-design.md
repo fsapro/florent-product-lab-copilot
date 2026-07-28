@@ -1,5 +1,6 @@
 # Solution Design
 
+sd_version: "1.0"
 Statut : Draft
 Niveau : Léger | Standard | Renforcé
 Dernière mise à jour : YYYY-MM-DD
@@ -140,3 +141,13 @@ Voir aussi `docs/implementation-plan.md`.
 
 Le développement fonctionnel ne peut démarrer que lorsque le verdict de revue est
 `Approved` et que la validation PM est `Approved`.
+
+---
+
+## 16. Historique des versions
+
+Regles d'incrementation : majeure (2.0, 3.0) si changement de perimetre ou invalidation design (Type C), mineure (1.1, 1.2) si clarification sans changement de perimetre (Type B), aucune nouvelle version pour correction operationnelle (Type A).
+
+| Version | Date | Changement | Motif | Lien REPLAN/ADR |
+|---|---|---|---|---|
+| 1.0 | | Création | Bootstrap | — |

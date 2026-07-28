@@ -53,6 +53,8 @@ A completer.
 
 Les changements de besoin ou de feature valides pendant la construction sont documentes ici.
 
-| Version | Date | Changement | Motif | Impact | Decision |
-|---|---|---|---|---|---|
-| 0.1 | | Creation du plan | | | |
+Regles d'incrementation : majeure (2.0, 3.0) si changement de perimetre ou invalidation design (Type C), mineure (1.1, 1.2) si clarification sans changement de perimetre (Type B), aucune nouvelle version pour correction operationnelle (Type A).
+
+| Version | Date | Changement | Motif | Lien REPLAN/ADR |
+|---|---|---|---|---|
+| 0.1 | | Creation du plan | Bootstrap | — |

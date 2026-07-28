@@ -62,6 +62,15 @@ Le PM valide l'adéquation de la solution au problème, le périmètre, les impa
 fonctionnels, options et compromis, risques significatifs, dépendances structurantes
 et réversibilité. Il ne valide pas les détails internes du code.
 
+Toute mise à jour d'un document structurant (PRD/plan, Solution Design, canvas)
+incrémente sa version et ajoute une ligne dans la table de version du document.
+Règles d'incrémentation : majeure (2.0, 3.0) si changement de périmètre ou
+invalidation design (Type C), mineure (1.1, 1.2) si clarification sans changement
+de périmètre (Type B), aucune nouvelle version pour correction opérationnelle
+(Type A). Si le Solution Design passe en version majeure, aucune issue de
+développement ne peut être `Ready` tant que le nouveau Solution Design n'est pas
+`Approved`.
+
 ---
 
 ## Sobriété, réutilisation et dépendances
