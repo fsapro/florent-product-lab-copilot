@@ -24,7 +24,19 @@ projects:
       - id: phase-1
         name: "Socle et modele de domaine"
         milestone: 1
-        status: in_progress
+        status: done
+      - id: phase-2
+        name: "TA2S testable en Docker localement"
+        milestone: 2
+        status: done
+      - id: phase-3
+        name: "Console UI Forma (Phases 0-2)"
+        milestone: 3
+        status: done
+      - id: phase-4
+        name: "UI Complete et Console testable"
+        milestone: 5
+        status: active
 
   mcp-product-opportunity:
     name: mcp-product-opportunity
