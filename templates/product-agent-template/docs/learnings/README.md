@@ -1,29 +1,38 @@
-# Apprentissages locaux
+﻿# Apprentissages locaux
 
-Registre local des erreurs et écarts observés sur ce projet.
+Registre local des erreurs et ecarts observes sur ce projet.
 
-## Principe par défaut
+Par defaut, aucun apprentissage n'est cree. Un apprentissage n'est cree que si
+cout(non-capitalisation) > cout(maintenance). Decision prise en cloture de projet.
 
-Par défaut, aucun apprentissage n'est créé.
+## Format : learning-log.yaml
 
-Un apprentissage local n'est créé que lorsque le coût de ne pas le capitaliser est supérieur au coût de maintenir cet apprentissage dans le temps. Une erreur mineure, ponctuelle, déjà couverte par un contrôle existant, ou sans valeur de réutilisation crédible n'est pas enregistrée.
+```yaml
+id: LRN-YYYY-NNN
+status: observed   # observed | qualified | applied_locally | rejected | superseded
+project: project-slug
+category: verification_gap
+  # requirement_gap | implementation_error | verification_gap | regression
+observation: ""
+impact: ""
+root_cause:
+  status: confirmed   # suspected | confirmed
+  description: ""
+correction: ""
+scope_candidate: project   # project | portfolio
+evidence:
+  issue: null
+  pull_request: null
+created_at: "<ISO-8601>"
+created_by: copilot
+```
 
-Ce registre doit rester petit et exploitable. Une mémoire bruitée par de nombreuses entrées mineures est pire qu'une mémoire incomplète.
+`learning-log.yaml` reste `[]` tant qu'aucun apprentissage n'est justifie.
 
-## Cycle de vie
+## Quand creer un apprentissage
 
-Voir `docs/learning-lifecycle.md` (à la racine du repository) pour le modèle de données complet, les statuts, les portées et les catégories.
+En cloture de projet, pas a chaque issue. Pour chaque ecart notable :
+1. L'ecart a-t-il une valeur de reutilisation credible ?
+2. Le cout de non-capitalisation depasse-t-il le cout de maintenance ?
 
-## Format
-
-`learning-log.yaml` est une liste YAML d'enregistrements. Chaque entrée suit le modèle documenté dans `learning-lifecycle.md`. Le fichier reste vide (`[]`) tant qu'aucun apprentissage n'a été jugé nécessaire.
-
-## Quand créer un apprentissage
-
-La décision est prise en clôture de projet (mode `CLOSE` de l'orchestrateur), pas à chaque issue. Elle est obligatoire ; la création d'un apprentissage ne l'est pas.
-
-Pour chaque écart notable identifié pendant la rétrospective de clôture :
-1. Un écart a-t-il été observé ?
-2. Si oui, le coût de ne pas le capitaliser dépasse-t-il le coût de maintenir l'apprentissage ?
-
-Si la réponse à la seconde question est non ou incertaine, ne rien créer. Le doute profite à la légèreté du registre.
+Si la reponse 2 est non ou incertaine : ne rien creer.
