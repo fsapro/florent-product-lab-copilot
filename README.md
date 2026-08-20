@@ -19,8 +19,10 @@ jusqu'à un projet prêt pour le développement :
 6. faire évoluer le plan si le contexte change ;
 7. vérifier et clôturer un projet.
 
-Le comportement détaillé de chaque mode vit dans les prompts. La documentation décrit
-le système ; elle ne remplace pas les procédures opérationnelles.
+L'exécution (PRD, plan, tâches, implémentation) est pilotée par **spec-kit** depuis
+BOOTSTRAP. Ce repository fournit le portefeuille multi-projets, la vérification
+indépendante, les apprentissages cross-projets et l'installation des skills.
+Voir [`docs/spec-kit-adoption.md`](docs/spec-kit-adoption.md).
 
 ## Surfaces Copilot supportées
 
@@ -108,10 +110,10 @@ Vue synthétique de l'orchestration : [`docs/copilot/orchestration.md`](docs/cop
 | `setup/user-skills/product-orchestrator/SKILL.md` | Skill utilisateur cross-repo : détection du contexte, routage entre modes et garde-fous. |
 | `.github/agents/orchestrator-automation.agent.md` | Agent dédié aux décisions GitHub routinières : merge, fermeture d'issue, passage à l'issue suivante, Project/milestone, nettoyage de branche. |
 | `.github/prompts/*.prompt.md` | Détail opérationnel des procédures du repository central. |
+| `docs/spec-kit-adoption.md` | Workflow spec-kit, complément de constitution (Principe VI) et apport propre de ce repository. |
 | `docs/copilot/tooling-policy.md` | Politique des surfaces et modèles autorisés pour la gouvernance Copilot. |
 | `templates/product-agent-template/` | Template complet injecté dans les nouveaux repositories projets. |
 | `templates/product-agent-template/.github/skills/project-orchestrator/SKILL.md` | Skill locale des projets enfants : reprise, statut, replanification et clôture. |
-| `templates/product-agent-template/.github/skills/solution-design/SKILL.md` | Skill locale de production du Solution Design. |
 | `templates/product-agent-template/.github/skills/architecture-review/SKILL.md` | Skill locale de revue indépendante du Solution Design. |
 | `projects.yaml` | Registre des projets suivis. |
 | `memory/global-learnings.yaml` | Règles globales promues manuellement après validation. |
@@ -132,12 +134,12 @@ Vue synthétique de l'orchestration : [`docs/copilot/orchestration.md`](docs/cop
     └── close.prompt.md
 
 docs/
+├── spec-kit-adoption.md
 └── copilot/
     ├── orchestration.md
     ├── independent-verification.md
     ├── learning-lifecycle.md
-    ├── tooling-policy.md
-    └── audit-2026-07-23.md
+    └── tooling-policy.md
 
 memory/
 └── global-learnings.yaml
@@ -155,7 +157,6 @@ templates/
     ├── .github/agents/
     ├── .github/prompts/
     ├── .github/skills/project-orchestrator/SKILL.md
-    ├── .github/skills/solution-design/SKILL.md
     ├── .github/skills/architecture-review/SKILL.md
     ├── docs/product/plan.md
     ├── docs/solution-design/solution-design.md
@@ -163,9 +164,7 @@ templates/
     ├── docs/implementation-plan.md
     ├── docs/decisions/
     ├── docs/learnings/
-    ├── docs/independent-verification.md
-    ├── docs/tooling-policy.md
-    └── docs/learning-lifecycle.md
+    └── docs/independent-verification.md
 ```
 
 ## Sources de vérité
@@ -180,7 +179,7 @@ templates/
 | Apprentissages locaux | `docs/learnings/learning-log.yaml` du repository projet |
 | Registre multi-projets | `projects.yaml` |
 | Règles globales | `memory/global-learnings.yaml` |
-| Politique de modèles et outils | `docs/copilot/tooling-policy.md` dans le repository méta ; `docs/tooling-policy.md` dans un repository projet |
+| Politique de modèles et outils | `docs/copilot/tooling-policy.md` |
 
 ## Garde-fous essentiels
 
