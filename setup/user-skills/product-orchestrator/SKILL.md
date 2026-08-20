@@ -43,15 +43,14 @@ Ne jamais choisir un mode par supposition. Avant de router :
 
 1. Determiner si le workspace courant est le repository meta (presence d'un fichier
    `projects.yaml` a la racine), un repository projet enfant (presence de
-   `.github/skills/project-orchestrator/SKILL.md` et `docs/product/plan.md`), ou un
-   **workspace ambigu** (ni l'un ni l'autre — dossier vide, nouveau repository local,
-   ou projet totalement hors du framework). Dans ce troisieme cas, ne jamais assumer
-   un mode ni commencer a creer des fichiers : le point d'entree par defaut est
-   `DISCOVER`, a mener depuis le repository meta `florent-product-lab-copilot`.
+   `docs/product/plan.md`), ou un **workspace ambigu** (ni l'un ni l'autre — dossier
+   vide, nouveau repository local, ou projet totalement hors du framework). Dans ce
+   troisieme cas, ne jamais assumer un mode ni commencer a creer des fichiers : le
+   point d'entree par defaut est `DISCOVER`, a mener depuis le repository meta
+   `florent-product-lab-copilot`.
 2. Si repository meta : lire `projects.yaml` pour verifier l'etat d'enregistrement du
    projet cite.
-3. Si repository enfant : verifier la presence d'une skill locale
-   `.github/skills/project-orchestrator/SKILL.md` et de `docs/product/plan.md`.
+3. Si repository enfant : verifier la presence de `docs/product/plan.md`.
 4. Executer `gh issue list --state open` et verifier le GitHub Project associe avant
    de conclure sur l'etat d'avancement.
 
@@ -72,11 +71,10 @@ accessibles, mais ne les execute pas nativement comme commandes de prompt.
      `.github/prompts/discover.prompt.md`, `.github/prompts/bootstrap.prompt.md` ou
      `.github/prompts/adopt.prompt.md` comme procedure textuelle selon le mode demande.
 4. **Si le mode demande est RESUME, STATUS, REPLAN ou CLOSE** :
-   - Si une skill locale `project-orchestrator` existe dans le repository courant,
-     la deleguer (elle a le contexte complet du plan et des issues locales).
-   - Sinon, consulter le prompt correspondant du repository courant
-     (`.github/prompts/<mode>.prompt.md`) s'il existe, ou l'equivalent du
-     repository meta si on y travaille, comme procedure textuelle.
+   - Consulter le prompt correspondant du repository meta
+     (`.github/prompts/<mode>.prompt.md`) comme procedure textuelle.
+   - Pour un repository projet enfant, adapter la procedure en lisant `docs/product/plan.md`
+     et l'etat GitHub Issues/Project du projet cible.
 5. **Si aucun mode n'est donne** : deduire le mode le plus probable a partir de
   l'etat detecte (voir arbre de decision ci-dessous). L'executer sans confirmation PM
   si l'etat GitHub le rend objectif et qu'aucun arbitrage produit n'est ouvert. Demander
@@ -139,7 +137,8 @@ comme ressources textuelles accessibles et non comme prompt files executes nativ
 - Ne jamais creer de ressource GitHub en dehors des modes `BOOTSTRAP` ou `ADOPT` valides,
   et jamais sans que le workspace courant soit le repository meta.
 - Ne jamais demarrer de developpement fonctionnel dans un repository projet tant que
-  `docs/solution-design/solution-design.md` n'est pas au statut `Approved`.
+  `speckit-analyze` n'a pas ete execute sans CRITICAL non resolu et que le PM n'a pas
+  valide le plan issu de `speckit-plan`.
 - Pour une evolution du framework, modifier par defaut uniquement le repository source
   d'autorite concerne. Ne propager au template ou aux projets existants que si cette
   propagation est demandee explicitement.

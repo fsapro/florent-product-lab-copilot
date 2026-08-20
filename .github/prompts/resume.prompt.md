@@ -12,13 +12,13 @@ Projet : [nom du projet]
 
 1. Lire `projects.yaml` pour localiser le repository du projet.
 2. Charger `docs/product/plan.md` depuis le repository du projet.
-3. Vérifier le statut du Solution Design (`docs/solution-design/solution-design.md`) s'il existe.
+3. Vérifier l'état du plan spec-kit (`.specify/`) s'il existe.
 4. Récupérer les issues ouvertes et le GitHub Project.
 5. Identifier l'unique issue `In progress` ou la prochaine issue `Ready`.
 6. Récupérer les pull requests ouvertes et leur état CI.
 7. Restituer un résumé d'état complet au PM avant toute action observable.
-8. Si le Solution Design n'est pas `Approved`, rester en préparation/design et ne pas implémenter.
-9. Si le Solution Design est `Approved`, qu'aucune issue principale n'est déjà en cours, qu'une issue `Ready` a des critères clairs et qu'aucun arbitrage produit n'est ouvert, démarrer l'implémentation sans demander au PM de valider le passage à l'issue suivante.
+8. Si `speckit-analyze` retourne des CRITICAL non résolus, rester en préparation/design et ne pas implémenter.
+9. Si le plan spec-kit est prêt, qu'aucune issue principale n'est déjà en cours, qu'une issue `Ready` a des critères clairs et qu'aucun arbitrage produit n'est ouvert, démarrer l'implémentation sans demander au PM de valider le passage à l'issue suivante.
 10. Demander une décision PM uniquement si le périmètre, la priorité, les critères, le statut GitHub ou le risque ne permettent pas de choisir objectivement la prochaine action.
 11. En cas d'hésitation opérationnelle sur `merge_pr`, `close_issue`, `start_next_issue`, `update_project` ou `cleanup_branch`, déléguer la décision à l'agent `.github/agents/orchestrator-automation.agent.md` et suivre son verdict (`proceed`, `proceed_with_log`, `ask_pm`, `blocked`).
 

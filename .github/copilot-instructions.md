@@ -48,12 +48,13 @@ gouvernance, pas un renvoi vers un autre fichier.
 
 Pour tout repository projet suivi par ce framework, le workflow obligatoire est :
 
-PRD → Solution Design → revue indépendante → validation PM → ADR nécessaires → plan
-d'implémentation → issues → développement → tests proportionnés → contrôle de
-conformité au design → Pull Request → fusion → mise à jour documentaire.
+PRD → speckit-specify → speckit-clarify → speckit-plan → revue indépendante →
+validation PM → speckit-analyze → speckit-tasks → développement → Pull Request →
+fusion → mise à jour documentaire.
 
 Aucun développement fonctionnel dans un repository projet ne démarre tant que
-`docs/solution-design/solution-design.md` n'existe pas avec le statut `Approved`.
+`speckit-analyze` retourne un résultat avec au moins un CRITICAL non résolu, ou
+tant que le PM n'a pas validé le plan issu de `speckit-plan`.
 Avant cette validation, seules sont autorisées : exploration, clarification, recherche
 documentaire, comparaison d'options, prototype jetable explicitement autorisé et preuve
 de faisabilité non fusionnée dans le produit.
@@ -167,8 +168,7 @@ Copilot sollicite le PM uniquement si une action implique :
 | Source | Localisation |
 |---|---|
 | Plan produit du projet | `docs/product/plan.md` dans le repository du projet |
-| Solution Design approuvé | `docs/solution-design/solution-design.md` dans le repository du projet |
-| Plan d'implémentation | `docs/implementation-plan.md` dans le repository du projet |
+| Spec et plan spec-kit | `.specify/` dans le repository du projet |
 | Travail et avancement | GitHub Issues et GitHub Project |
 | Implémentation | Pull requests et CI |
 | Décisions | ADR et PDR |

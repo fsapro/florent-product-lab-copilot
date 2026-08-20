@@ -113,8 +113,7 @@ Vue synthétique de l'orchestration : [`docs/copilot/orchestration.md`](docs/cop
 | `docs/spec-kit-adoption.md` | Workflow spec-kit, complément de constitution (Principe VI) et apport propre de ce repository. |
 | `docs/copilot/tooling-policy.md` | Politique des surfaces et modèles autorisés pour la gouvernance Copilot. |
 | `templates/product-agent-template/` | Template complet injecté dans les nouveaux repositories projets. |
-| `templates/product-agent-template/.github/skills/project-orchestrator/SKILL.md` | Skill locale des projets enfants : reprise, statut, replanification et clôture. |
-| `templates/product-agent-template/.github/skills/architecture-review/SKILL.md` | Skill locale de revue indépendante du Solution Design. |
+| `templates/product-agent-template/` | Template minimal : copilot-instructions, PR template, plan, decisions, learnings, independent-verification. |
 | `projects.yaml` | Registre des projets suivis. |
 | `memory/global-learnings.yaml` | Règles globales promues manuellement après validation. |
 
@@ -154,14 +153,8 @@ setup/
 templates/
 └── product-agent-template/
     ├── .github/copilot-instructions.md
-    ├── .github/agents/
-    ├── .github/prompts/
-    ├── .github/skills/project-orchestrator/SKILL.md
-    ├── .github/skills/architecture-review/SKILL.md
+    ├── .github/PULL_REQUEST_TEMPLATE.md
     ├── docs/product/plan.md
-    ├── docs/solution-design/solution-design.md
-    ├── docs/architecture/
-    ├── docs/implementation-plan.md
     ├── docs/decisions/
     ├── docs/learnings/
     └── docs/independent-verification.md
@@ -172,7 +165,7 @@ templates/
 | Source | Localisation |
 |---|---|
 | Plan produit d'un projet | `docs/product/plan.md` dans le repository projet |
-| Solution Design approuvé | `docs/solution-design/solution-design.md` dans le repository projet |
+| Spec et plan spec-kit | `.specify/` dans le repository projet |
 | Travail et avancement | GitHub Issues et GitHub Project |
 | Implémentation et preuves | Pull requests et CI |
 | Décisions | `docs/decisions/` du repository projet |
