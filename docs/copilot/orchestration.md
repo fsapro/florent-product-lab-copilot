@@ -1,7 +1,7 @@
 # Orchestration — GitHub Copilot
 
 Ce document décrit les modes disponibles dans ce repository méta et leur répartition.
-Pour le workflow d'exécution d'un projet, voir [`docs/spec-kit-adoption.md`](spec-kit-adoption.md).
+Pour le workflow d'exécution d'un projet, voir [`docs/spec-kit-adoption.md`](../spec-kit-adoption.md).
 
 ## Répartition des responsabilités
 
@@ -36,7 +36,7 @@ d'implémentation → issues → développement (piloté par spec-kit) → contr
 conformité → Pull Request → fusion → mise à jour documentaire.
 
 L'exécution (spec, plan, tâches, implémentation) est prise en charge par spec-kit.
-Ce que ce repository apporte en complément : voir [`docs/spec-kit-adoption.md`](spec-kit-adoption.md).
+Ce que ce repository apporte en complément : voir [`docs/spec-kit-adoption.md`](../spec-kit-adoption.md).
 
 ## Autonomie opérationnelle
 
