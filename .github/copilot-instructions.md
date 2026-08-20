@@ -64,42 +64,22 @@ et réversibilité. Il ne valide pas les détails internes du code.
 
 ---
 
-## Sobriété, réutilisation et dépendances
+## Sobriété et réutilisation
 
-Avant d'ajouter du code ou une dépendance, vérifier dans l'ordre : besoin réel
-maintenant, capacité déjà présente, bibliothèque standard, capacité native de la
-plateforme, dépendance déjà installée, composant open source reconnu, puis seulement
-solution custom minimale.
+Avant d'ajouter du code ou une dépendance : besoin réel maintenant, capacité existante,
+bibliothèque standard, capacité native, dépendance déjà installée, composant open source
+reconnu, puis seulement solution custom minimale.
 
-La sobriété ne réduit jamais la sécurité, l'accessibilité, la validation des entrées
-et sorties, la fiabilité, l'observabilité nécessaire, la protection des données, les
-tests proportionnés au risque ni la lisibilité maintenable.
-
-Authentification, autorisation, sessions, secrets et fédération d'identité ne sont
-jamais développés sur mesure si une solution standard, reconnue et adaptée existe.
+Authentification, autorisation, sessions et secrets ne sont jamais développés sur mesure
+si une solution standard existe.
 
 ---
 
 ## Tests proportionnés
 
-- Niveau 1, à chaque changement : contrôles rapides et déterministes sur le périmètre modifié.
-- Niveau 2, selon risque ou périmètre : intégration, contrats, accessibilité, sécurité ciblée, migration ou non-régression des flux impactés.
-- Niveau 3, avant release ou changement structurant : suite complète, E2E, sécurité élargie, performance, résilience, revue architecture/conformité globale.
-
-Pendant le développement itératif, ne pas relancer mécaniquement toute la suite à
-chaque micro-changement. Réexécuter d'abord le plus petit ensemble déterministe qui
-couvre les fichiers, contrats et flux modifiés. Ne répéter un contrôle déjà passé dans
-la même branche que si le code concerné, la configuration, les dépendances, les données
-de test ou la base de branche ont changé, ou si un échec exige une confirmation après
-correction.
-
-Planifier une salve de non-régression aux moments critiques : changement structurant,
-sécurité/authentification, migration, nouvelle dépendance, modification multi-composants,
-préparation de release, clôture de milestone/projet ou propagation multi-repository.
-Cette salve reste proportionnée aux flux réellement exposés au risque.
-
-Utiliser un LLM pour vérifier uniquement lorsqu'un test, linter, type checker, scanner,
-règle statique ou comparaison de schéma ne couvre pas le raisonnement nécessaire.
+Contrôles rapides et ciblés à chaque changement ; non-régression aux gates de risque
+(release, migration, sécurité, changement structurant). Privilégier les contrôles
+déterministes.
 
 ---
 
@@ -229,6 +209,8 @@ Une tâche n'est terminée que si :
 
 Les workflows d'orchestration sont documentés dans `docs/copilot/orchestration.md`.
 Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/adopt`, `/resume`, `/status`, `/replan`, `/close`).
+
+Pour l'exécution d'un projet avec spec-kit : voir `docs/spec-kit-adoption.md`.
 
 Modes disponibles : `DISCOVER` · `BOOTSTRAP` · `ADOPT` · `RESUME` · `STATUS` · `REPLAN` · `CLOSE`
 

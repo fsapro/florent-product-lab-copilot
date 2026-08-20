@@ -20,10 +20,9 @@ de vérité chargée automatiquement** : le contrat complet est ici, pas dans un
 - Plan d'implémentation : `docs/implementation-plan.md`
 - Travail : GitHub Issues et GitHub Project
 - Implémentation et preuves : pull requests et CI
-- Décisions structurantes : `docs/decisions/`
+- Décisions structurantes existantes : `docs/decisions/`
 - Apprentissages locaux : `docs/learnings/learning-log.yaml` (modèle et cycle de vie : `docs/learning-lifecycle.md`)
 - Niveaux de vérification indépendante : `docs/independent-verification.md`
-- Politique de modèles et outils : `docs/tooling-policy.md`
 
 ---
 
@@ -143,7 +142,7 @@ et réversibilité. Il ne valide pas les détails internes du code.
 5. Chercher le plus petit changement cohérent.
 6. Ne pas ajouter de dépendance sans besoin démontré et intérêt net validé.
 7. Implémenter uniquement le périmètre de l'issue.
-8. Exécuter les contrôles applicables selon `docs/testing-strategy.md`.
+8. Exécuter les contrôles applicables (tests proportionnés selon le risque : ciblés à chaque itération, non-régression aux gates définis dans la constitution spec-kit).
 9. Relire le diff pour vérifier la conformité au Solution Design.
 10. Avant de committer : inspecter explicitement `git status` / `git diff --stat` et ne stager que les fichiers directement liés à l'issue en cours. Ne jamais utiliser `git add -A` (ou équivalent) sans cette revue préalable — tout artefact inattendu (repository embarqué, fichier hors périmètre, changement d'une autre session) doit être signalé au PM avant d'être inclus dans le commit.
 11. Mettre à jour l'issue, la pull request et le Project.
@@ -206,50 +205,8 @@ La décision explicite (aucun apprentissage / apprentissage local créé / candi
 - Nouveau service : interdit par défaut.
 - Nouvelle couche d'abstraction : interdite par défaut.
 - Refactoring hors périmètre : interdit.
-- Besoins futurs spéculatifs : exclus.
 
-Toute exception doit expliquer : le besoin démontré, les alternatives considérées, le compromis retenu, la réversibilité — et être tracée dans `docs/decisions/`.
-
----
-
-## Sobriété, réutilisation et documentation technique
-
-Avant d'ajouter du code ou une dépendance, vérifier : besoin réel maintenant, capacité
-existante, bibliothèque standard, capacité native de la plateforme, dépendance déjà
-installée, composant open source reconnu, puis solution custom minimale.
-
-La sobriété ne réduit jamais la sécurité, l'accessibilité, la validation, la fiabilité,
-l'observabilité nécessaire, la protection des données, les tests correspondant aux
-risques ni la lisibilité maintenable.
-
-Utiliser Context7 uniquement lorsqu'une décision ou implémentation dépend d'une
-bibliothèque, framework, API, version ou capacité technique actuelle. Identifier d'abord
-la technologie et sa version réelle, puis poser une question documentaire précise.
-
-Authentification, autorisation, sessions, secrets et fédération d'identité ne sont
-jamais développés sur mesure si une solution standard, reconnue et adaptée existe.
-
-Un design system UI n'est introduit que si l'interface, la réutilisation, l'accessibilité
-et le coût de maintenance justifient cette complexité.
-
----
-
-## Tests proportionnés
-
-Appliquer `docs/testing-strategy.md` :
-
-- Niveau 1 à chaque changement ;
-- Niveau 2 selon le risque ou le périmètre ;
-- Niveau 3 avant release ou changement structurant.
-
-Pendant les itérations de développement, ne pas relancer mécaniquement toute la suite :
-réexécuter le plus petit ensemble déterministe couvrant le changement, puis déclencher
-une salve de non-régression uniquement aux gates de risque définis dans
-`docs/testing-strategy.md`.
-
-Privilégier les contrôles déterministes. Réserver les analyses LLM aux raisonnements
-qui ne peuvent pas être couverts par test, linter, type checker, scanner, règle statique
-ou comparaison de schéma.
+Toute exception doit être tracée dans `docs/decisions/`.
 
 ---
 
