@@ -27,6 +27,21 @@ Aucun developpement fonctionnel sans les deux gates valides.
 
 ---
 
+## Politique de modeles
+
+| Nature du travail | Modele |
+|---|---|
+| `speckit-specify`, `speckit-clarify`, `speckit-plan` | modele de raisonnement (Opus) |
+| Arbitrage produit, decision structurante, redaction d'ADR | modele de raisonnement (Opus) |
+| `speckit-analyze`, `speckit-checklist`, `speckit-tasks` | modele cost-efficient (Sonnet) |
+| `speckit-implement`, `speckit-converge`, tests, documentation | modele cost-efficient (Sonnet) |
+| Verification independante | modele cost-efficient (Sonnet), session distincte |
+
+Regle : le modele de raisonnement sert a concevoir et arbitrer, pas a executer.
+Une fois le plan valide par le PM, tout passe en cost-efficient.
+
+---
+
 ## Regle anti-implementation prematuree
 
 Ne jamais creer de code ni modifier des fichiers fonctionnels sans :

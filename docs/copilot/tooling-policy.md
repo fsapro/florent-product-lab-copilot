@@ -17,6 +17,29 @@ autre assistant LLM externe ne peut pas produire de verdict de gouvernance oppos
 
 ---
 
+## Choix du modèle par nature de tâche
+
+Le modèle de raisonnement sert à concevoir et arbitrer, pas à exécuter. Une fois le plan
+validé par le PM, tout passe en cost-efficient.
+
+| Nature du travail | Étapes spec-kit | Modèle |
+|---|---|---|
+| Conception, cadrage, brainstorming avec le PM | `speckit-specify`, `speckit-clarify`, `speckit-plan` | raisonnement (Opus) |
+| Arbitrage produit, décision structurante, rédaction d'ADR | — | raisonnement (Opus) |
+| Contrôle et découpage | `speckit-analyze`, `speckit-checklist`, `speckit-tasks` | cost-efficient (Sonnet) |
+| Exécution, tests, documentation | `speckit-implement`, `speckit-converge` | cost-efficient (Sonnet) |
+| Vérification indépendante | — | cost-efficient (Sonnet), session distincte |
+
+Mesuré pendant le test d'adoption de spec-kit : `speckit-analyze` exécuté en Sonnet a
+détecté une erreur numérique réelle dans la spec (quatre catalogues annoncés contre six
+dans le code) ainsi que des exigences non couvertes par des tâches. Le contrôle ne
+justifie pas un modèle de raisonnement.
+
+Cette politique porte sur le coût, pas sur la validité : un verdict reste opposable
+uniquement s'il est produit dans une surface approuvée, quel que soit le modèle.
+
+---
+
 ## Surfaces approuvées
 
 | Surface | Usage approuvé |

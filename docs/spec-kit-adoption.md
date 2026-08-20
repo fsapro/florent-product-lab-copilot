@@ -26,6 +26,16 @@ Gates inchangés depuis ce repository :
 
 ---
 
+## Politique de modèles
+
+Le modèle de raisonnement sert à concevoir et arbitrer, pas à exécuter. Une fois le plan
+validé par le PM, tout passe en cost-efficient : `speckit-analyze`, `speckit-checklist`,
+`speckit-tasks`, `speckit-implement` et `speckit-converge`.
+
+Détail et justification : [`docs/copilot/tooling-policy.md`](copilot/tooling-policy.md).
+
+---
+
 ## Complément obligatoire : Principe VI
 
 Coller ce texte dans `.specify/memory/constitution.md` de tout projet initialisé avec
