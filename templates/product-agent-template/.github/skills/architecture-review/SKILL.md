@@ -12,7 +12,6 @@ Cette skill vérifie le Solution Design depuis un contexte distinct de l'auteur.
 
 - `docs/product/plan.md`
 - `docs/solution-design/solution-design.md`
-- `docs/design-validation.md`
 - `docs/decisions/`
 - fichiers du repository strictement nécessaires à la vérification
 

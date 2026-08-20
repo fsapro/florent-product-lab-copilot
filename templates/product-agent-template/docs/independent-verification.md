@@ -82,7 +82,7 @@ Pour les niveaux 1 et 2, le vérificateur doit être une session ou un agent Git
 distinct de l'implémenteur. Le critère est la surface GitHub Copilot utilisée, pas le
 fournisseur du modèle sous-jacent.
 
-Le vérificateur utilise uniquement les surfaces approuvées dans `docs/tooling-policy.md`.
+Le vérificateur utilise uniquement les surfaces approuvées (Copilot CLI, VS Code Copilot Chat, GitHub.com — voir la politique du repository méta `florent-product-lab-copilot`).
 Claude CLI, Claude Code, appels Anthropic directs, ChatGPT ou autres assistants LLM
 externes ne produisent pas de verdict opposable. Un verdict issu d'une surface externe
 est rejeté et doit être refait par une session GitHub Copilot indépendante.

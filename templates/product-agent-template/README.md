@@ -24,7 +24,6 @@ Fournir a chaque projet :
 - Implementation et preuves : pull requests et CI
 - Decisions structurantes : docs/decisions/
 - Verification independante : docs/independent-verification.md
-- Politique de modeles et outils : docs/tooling-policy.md
 
 ## Autonomie operationnelle
 

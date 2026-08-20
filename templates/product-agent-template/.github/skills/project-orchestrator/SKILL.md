@@ -84,7 +84,7 @@ Copilot independante.
 - Procedures VS Code natives et ressources textuelles pour Copilot CLI : [.github/prompts/resume.prompt.md](../../prompts/resume.prompt.md), [status.prompt.md](../../prompts/status.prompt.md), [replan.prompt.md](../../prompts/replan.prompt.md), [close.prompt.md](../../prompts/close.prompt.md)
 - Contrat de gouvernance : [.github/copilot-instructions.md](../../copilot-instructions.md)
 - Vérification indépendante : [docs/independent-verification.md](../../../docs/independent-verification.md)
-- Politique de modèles et outils : [docs/tooling-policy.md](../../../docs/tooling-policy.md)
+- Politique de modèles et outils : voir `docs/copilot/tooling-policy.md` du repository méta `florent-product-lab-copilot`
 
 ## Autonomie Copilot CLI
 
