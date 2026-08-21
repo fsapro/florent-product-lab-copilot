@@ -15,5 +15,4 @@ Un fichier markdown par décision, ou un fichier unique `decisions-log.md` si le
 
 Ce dossier reste vide tant qu'aucune décision significative n'a été prise.
 
-Les ADR nécessaires sont identifiés dans `docs/solution-design/solution-design.md`
-avant le développement.
+Les ADR nécessaires émergent du plan spec-kit (`.specify/`) et du Principe VI.

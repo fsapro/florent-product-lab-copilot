@@ -48,12 +48,13 @@ gouvernance, pas un renvoi vers un autre fichier.
 
 Pour tout repository projet suivi par ce framework, le workflow obligatoire est :
 
-PRD → Solution Design → revue indépendante → validation PM → ADR nécessaires → plan
-d'implémentation → issues → développement → tests proportionnés → contrôle de
-conformité au design → Pull Request → fusion → mise à jour documentaire.
+PRD → speckit-specify → speckit-clarify → speckit-plan → revue indépendante →
+validation PM → speckit-analyze → speckit-tasks → développement → Pull Request →
+fusion → mise à jour documentaire.
 
 Aucun développement fonctionnel dans un repository projet ne démarre tant que
-`docs/solution-design/solution-design.md` n'existe pas avec le statut `Approved`.
+`speckit-analyze` retourne un résultat avec au moins un CRITICAL non résolu, ou
+tant que le PM n'a pas validé le plan issu de `speckit-plan`.
 Avant cette validation, seules sont autorisées : exploration, clarification, recherche
 documentaire, comparaison d'options, prototype jetable explicitement autorisé et preuve
 de faisabilité non fusionnée dans le produit.
@@ -64,42 +65,22 @@ et réversibilité. Il ne valide pas les détails internes du code.
 
 ---
 
-## Sobriété, réutilisation et dépendances
+## Sobriété et réutilisation
 
-Avant d'ajouter du code ou une dépendance, vérifier dans l'ordre : besoin réel
-maintenant, capacité déjà présente, bibliothèque standard, capacité native de la
-plateforme, dépendance déjà installée, composant open source reconnu, puis seulement
-solution custom minimale.
+Avant d'ajouter du code ou une dépendance : besoin réel maintenant, capacité existante,
+bibliothèque standard, capacité native, dépendance déjà installée, composant open source
+reconnu, puis seulement solution custom minimale.
 
-La sobriété ne réduit jamais la sécurité, l'accessibilité, la validation des entrées
-et sorties, la fiabilité, l'observabilité nécessaire, la protection des données, les
-tests proportionnés au risque ni la lisibilité maintenable.
-
-Authentification, autorisation, sessions, secrets et fédération d'identité ne sont
-jamais développés sur mesure si une solution standard, reconnue et adaptée existe.
+Authentification, autorisation, sessions et secrets ne sont jamais développés sur mesure
+si une solution standard existe.
 
 ---
 
 ## Tests proportionnés
 
-- Niveau 1, à chaque changement : contrôles rapides et déterministes sur le périmètre modifié.
-- Niveau 2, selon risque ou périmètre : intégration, contrats, accessibilité, sécurité ciblée, migration ou non-régression des flux impactés.
-- Niveau 3, avant release ou changement structurant : suite complète, E2E, sécurité élargie, performance, résilience, revue architecture/conformité globale.
-
-Pendant le développement itératif, ne pas relancer mécaniquement toute la suite à
-chaque micro-changement. Réexécuter d'abord le plus petit ensemble déterministe qui
-couvre les fichiers, contrats et flux modifiés. Ne répéter un contrôle déjà passé dans
-la même branche que si le code concerné, la configuration, les dépendances, les données
-de test ou la base de branche ont changé, ou si un échec exige une confirmation après
-correction.
-
-Planifier une salve de non-régression aux moments critiques : changement structurant,
-sécurité/authentification, migration, nouvelle dépendance, modification multi-composants,
-préparation de release, clôture de milestone/projet ou propagation multi-repository.
-Cette salve reste proportionnée aux flux réellement exposés au risque.
-
-Utiliser un LLM pour vérifier uniquement lorsqu'un test, linter, type checker, scanner,
-règle statique ou comparaison de schéma ne couvre pas le raisonnement nécessaire.
+Contrôles rapides et ciblés à chaque changement ; non-régression aux gates de risque
+(release, migration, sécurité, changement structurant). Privilégier les contrôles
+déterministes.
 
 ---
 
@@ -187,8 +168,7 @@ Copilot sollicite le PM uniquement si une action implique :
 | Source | Localisation |
 |---|---|
 | Plan produit du projet | `docs/product/plan.md` dans le repository du projet |
-| Solution Design approuvé | `docs/solution-design/solution-design.md` dans le repository du projet |
-| Plan d'implémentation | `docs/implementation-plan.md` dans le repository du projet |
+| Spec et plan spec-kit | `.specify/` dans le repository du projet |
 | Travail et avancement | GitHub Issues et GitHub Project |
 | Implémentation | Pull requests et CI |
 | Décisions | ADR et PDR |
@@ -229,6 +209,8 @@ Une tâche n'est terminée que si :
 
 Les workflows d'orchestration sont documentés dans `docs/copilot/orchestration.md`.
 Les prompts réutilisables sont dans `.github/prompts/` (invocables via `/discover`, `/bootstrap`, `/adopt`, `/resume`, `/status`, `/replan`, `/close`).
+
+Pour l'exécution d'un projet avec spec-kit : voir `docs/spec-kit-adoption.md`.
 
 Modes disponibles : `DISCOVER` · `BOOTSTRAP` · `ADOPT` · `RESUME` · `STATUS` · `REPLAN` · `CLOSE`
 
